@@ -371,6 +371,7 @@
     return moment(local).fromNow();
   }
     $(function() {
+	   $(".lib-chat-head").hide();
       $.ajax({
         url: window.location.origin + '/api/data/v1/page/assemble?orgdetails=orgName,email',
         type: "POST",
