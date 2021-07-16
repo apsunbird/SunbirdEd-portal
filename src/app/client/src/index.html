@@ -3,10 +3,24 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Welcome: GSWS Learning Platform</title>
   <base href="/<%=slug%>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon">
+  <link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700"
+  rel="stylesheet">
+
+<!-- Bootstrap CSS File -->
+<link href="assets/libs/bootstrap.min.css" rel="stylesheet">
+
+<link href="assets/libs/owl.carousel.min.css" rel="stylesheet">
+
+
+<!-- Main Stylesheet File -->
+<link href="assets/libs/style.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
   
 </head>
 
@@ -152,6 +166,295 @@
   <% if (baseUrl) { %>
     <input type="hidden" id="baseUrl" value="<%=baseUrl%>" />
   <% } %>
+  <script src="assets/libs/jquery.min.js"></script>
+<script src="assets/libs/jquery-migrate.min.js"></script>
+<script src="assets/libs/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/js/easing.min.js"></script>
+<script src="assets/libs/js/hoverIntent.js"></script>
+<script src="assets/libs/js/superfish.min.js"></script>
+<script src="assets/libs/js/wow.min.js"></script>
+<script src="assets/libs/js/owl.carousel.min.js"></script>
+<script src="assets/libs/js/magnific-popup.min.js"></script>
+<script src="assets/libs/js/sticky.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="assets/libs/main.js"></script>
   <app-root></app-root>
 </body>
+
+<script>
+
+
+  function openSearch() {
+    document.getElementById("myOverlay").style.display = "block";
+  }
+
+  function closeSearch() {
+    document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+<!--script for open serach close here-->
+
+
+
+<!--script for open navbar start here-->
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
+<!--script for open navbar close here-->
+
+
+
+<!--script for move to top button start here-->
+<script>
+  //Get the button
+  var mybutton = document.getElementById("myBtn");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+<!--script for move to top button close here-->
+
+
+
+
+
+
+<script>
+
+
+
+  (function ($) {
+    $.fn.countTo = function (options) {
+      options = options || {};
+
+      return $(this).each(function () {
+        // set options for current element
+        var settings = $.extend({}, $.fn.countTo.defaults, {
+          from: $(this).data('from'),
+          to: $(this).data('to'),
+          speed: $(this).data('speed'),
+          refreshInterval: $(this).data('refresh-interval'),
+          decimals: $(this).data('decimals')
+        }, options);
+
+        // how many times to update the value, and how much to increment the value on each update
+        var loops = Math.ceil(settings.speed / settings.refreshInterval),
+          increment = (settings.to - settings.from) / loops;
+
+        // references & variables that will change with each update
+        var self = this,
+          $self = $(this),
+          loopCount = 0,
+          value = settings.from,
+          data = $self.data('countTo') || {};
+
+        $self.data('countTo', data);
+
+        // if an existing interval can be found, clear it first
+        if (data.interval) {
+          clearInterval(data.interval);
+        }
+        data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+        // initialize the element with the starting value
+        render(value);
+
+        function updateTimer() {
+          value += increment;
+          loopCount++;
+
+          render(value);
+
+          if (typeof (settings.onUpdate) == 'function') {
+            settings.onUpdate.call(self, value);
+          }
+
+          if (loopCount >= loops) {
+            // remove the interval
+            $self.removeData('countTo');
+            clearInterval(data.interval);
+            value = settings.to;
+
+            if (typeof (settings.onComplete) == 'function') {
+              settings.onComplete.call(self, value);
+            }
+          }
+        }
+
+        function render(value) {
+          var formattedValue = settings.formatter.call(self, value, settings);
+          $self.html(formattedValue);
+        }
+      });
+    };
+
+    $.fn.countTo.defaults = {
+      from: 0,               // the number the element should start at
+      to: 0,                 // the number the element should end at
+      speed: 1000,           // how long it should take to count between the target numbers
+      refreshInterval: 100,  // how often the element should be updated
+      decimals: 0,           // the number of decimal places to show
+      formatter: formatter,  // handler for formatting the value before rendering
+      onUpdate: null,        // callback method for every time the element is updated
+      onComplete: null       // callback method for when the element finishes updating
+    };
+
+    function formatter(value, settings) {
+      return value.toFixed(settings.decimals);
+    }
+  }(jQuery));
+
+  jQuery(function ($) {
+    // custom formatting example
+    $('.count-number').data('countToOptions', {
+      formatter: function (value, options) {
+        return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+      }
+    });
+
+    // start all the timers
+    $('.timer').each(count);
+
+    function count(options) {
+      var $this = $(this);
+      options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+      $this.countTo(options);
+    }
+  });
+  function navigateToExplore() {
+    if ($("#site-search").val().trim() != '') {
+      location.href = "/explore-course/1?key=" + $("#site-search").val().trim();
+    } else {
+      $("#site-search").val('');
+    }
+  }
+  $(function () {
+  debugger
+    $("#popularCourseSection").on("click", ".small-bow", function () {
+      location.href = '/explore-course/course/' + $(this).find('input').val();
+    });
+    $("#site-search").on("keydown", function (e) {
+      if ($("#site-search").val().trim() != '') {
+        e.keyCode == 13 ? location.href = "/explore-course/1?key=" + $("#site-search").val().trim() : '';
+      } else {
+        $("#site-search").val('');
+      }
+    });
+  });
+  function exploreCourse(url) {
+    location.href = url;
+  }
+  function calculateTimeAgo(lastUpdatedOn) {
+    const local = moment(lastUpdatedOn).local().format('YYYY-MM-DD HH:mm:ss');
+    return moment(local).fromNow();
+  }
+    $(function() {
+      $.ajax({
+        url: window.location.origin + '/api/data/v1/page/assemble?orgdetails=orgName,email',
+        type: "POST",
+        data: '{"request":{"source":"web","name":"Course","filters":{}}}',
+        processData: false,
+        contentType: 'application/json',
+        success: function (response) {
+          debugger
+          console.log(response)
+          var latestCourses = _.find(response.result.response.sections, { name: 'Popular Courses' });
+          // latestCourses.contents = latestCourses.contents.slice(0,2)
+          // $(".pageSection-count").html(latestCourses.count);
+          var resourceContents = '';
+          $.each(latestCourses.contents, function (index, value) {
+            if(index<3) {
+              if(index === 0) {
+                resourceContents += '<div class="carousel-item active">';
+              }
+              resourceContents += '<div class="col-xs-4 col-sm-4 col-md-4 pull-left">';
+                resourceContents += '<div class="small-bow">';
+                  resourceContents += '<input type="hidden" value=' + value.identifier + '>';
+                  resourceContents += '<a href="javascript:" onclick=abcd() class="slider_info">';
+                    if (value.appIcon != undefined) {
+                      resourceContents += '<img class="img-fluid card-img-top" src=' + value.appIcon + ' alt=' + value.name + ' width="305px" style="height:158px;object-fit: cover;">';
+                    }
+            else {
+              resourceContents += '<img class="img-fluid card-img-top" src="assets/images/book.png" alt=' + value.name + ' width="305px" style="height:158px;object-fit: cover;">';
+            }
+            resourceContents += '</a>';
+            resourceContents += '<div class="silder-content oppor">';
+            resourceContents += '<p class="truncate" title="'+value.name+'"><b>'+_.capitalize(value.name)+'</b></p>';
+            resourceContents += '<p><b><small>'+value.organisation[0]+'</small></b></p>';
+            resourceContents += '<p class="truncate" title="'+value.description+'">'+value.description+'</p>';
+            // resourceContents += '' + calculateTimeAgo(value.createdOn) + '';
+            resourceContents += '</p> </div> </div> </div>';
+            if(index === 2 || index===latestCourses.contents.length-1) {
+                resourceContents += '</div>';
+            }
+            } else {
+              if(index % 3 === 0) {
+                resourceContents += '<div class="carousel-item">';
+              }
+              resourceContents += '<div class="col-xs-4 col-sm-4 col-md-4 pull-left">';
+                resourceContents += '<div class="small-bow">';
+                  resourceContents += '<input type="hidden" value=' + value.identifier + '>';
+                  resourceContents += '<a href="javascript:" onclick=abcd() class="slider_info">';
+                    if (value.appIcon != undefined) {
+                      resourceContents += '<img class="img-fluid card-img-top" src=' + value.appIcon + ' alt=' + value.name + ' width="305px" style="height:158px;object-fit: cover;">';
+                    }
+            else {
+              resourceContents += '<img class="img-fluid card-img-top" src="assets/images/book.png" alt=' + value.name + ' width="305px" style="height:158px;object-fit: cover;">';
+            }
+            resourceContents += '</a>';
+            resourceContents += '<div class="silder-content oppor">';
+            resourceContents += '<p class="truncate" title="'+value.name+'"><b>'+_.capitalize(value.name)+'</b></p>';
+            resourceContents += '<p><b><small>'+value.organisation[0]+'</small></b></p>';
+            resourceContents += '<p class="truncate" title="'+value.description+'">'+value.description+'</p>';
+            // resourceContents += '' + calculateTimeAgo(value.createdOn) + '';
+            resourceContents += '</div> </div> </div>';
+            if(index % 3 === 2 || index===latestCourses.contents.length-1) {
+                resourceContents += '</div>';
+            }
+            }
+          });
+          $("#popularCourseSection").html(resourceContents);
+        }
+      });
+    });
+  </script>
+  
+  <script>
+  function abcd()
+  {
+  debugger
+   $("#popularCourseSection").on("click", ".small-bow", function () {
+      location.href = '/explore-course/course/' + $(this).find('input').val();
+    });
+    $("#site-search").on("keydown", function (e) {
+      if ($("#site-search").val().trim() != '') {
+        e.keyCode == 13 ? location.href = "/explore-course/1?key=" + $("#site-search").val().trim() : '';
+      } else {
+        $("#site-search").val('');
+      }
+    });
+  }
+  </script>
 </html>

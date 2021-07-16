@@ -67,10 +67,12 @@
 }
 .ui.menu {
   // position: sticky;
-  z-index: 999;
+   z-index: 999;
   border: 0;
   margin-bottom: calculateRem(-1px);
-  background: var(--sb-menu-bg);
+  background: linear-gradient(
+    45deg
+    , #0D47A1, #4CAF50);
   &.player-fullscreen-header{
     display: none !important;
   }

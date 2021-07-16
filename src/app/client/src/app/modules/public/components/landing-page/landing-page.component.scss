@@ -32,3 +32,71 @@
     font-weight: bold;
     font-size: 1.25em;
   }
+
+
+
+
+
+  
+	.bg-imgg {
+        background:url(assets/images/bagg1.png);
+          height: 40%; 
+      
+          /* Center and scale the image nicely */
+          /* background-position: center; */
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 70%;
+          /* margin-top: -55px; */
+          }
+      
+      
+          .bg-text {
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0, 0.4);
+          color: white;
+          font-weight: bold;
+          border: 3px solid #f1f1f1;
+          position: absolute;
+          top: 27%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          width: 80%;
+          padding: 0px;
+          text-align: center;
+          height: 231px;
+      
+          }
+          .bg-imgg h4 {
+          position: ABSOLUTE;
+          top: 101px;
+          padding: 28px;
+          text-align: center;
+          left: 0px;
+          font-size: 29px;
+          right: 0px;
+          color: #000;
+          }
+      
+          
+       
+      
+      #about .content h2 {
+          color: #0c2e8a;
+          font-weight: 700;
+          font-size: 36px;
+          font-family: "Raleway", sans-serif;
+          /* margin-top: 83px; */
+      }
+              
+              .border-btm {
+              color: #045d38;
+          border-bottom: 3px solid #045d38;
+          border-radius: 3px;
+          padding-bottom: 0px;
+          border-height: 2rem;
+          width: 29px;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+      }
