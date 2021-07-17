@@ -1260,7 +1260,7 @@ onChange1(frmDivVal)
 
 
 
-       this.hrmsData= {
+      /* this.hrmsData= {
           'MOBILE':'9177057488',
           'EMP_MAIL_ID':'chakshu303@gmail.com',
           'EMP_NAME':'chakshu',
@@ -1275,9 +1275,9 @@ onChange1(frmDivVal)
           "AGE":"10"
 
 
-        }
+        }*/
 
-      /*  this.hrmsData= {
+       this.hrmsData= {
           'MOBILE':res['result'][0]['MOBILE'],
           'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
           'EMP_NAME':res['result'][0]['EMP_NAME'],
@@ -1292,7 +1292,7 @@ onChange1(frmDivVal)
           "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
           "CFMS_ID":res['result'][0]['CFMS_ID']
           
-        }*/
+        }
 
         if(this.hrmsData.MOBILE!=null)
         {
