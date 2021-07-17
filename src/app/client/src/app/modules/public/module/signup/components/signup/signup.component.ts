@@ -1236,161 +1236,135 @@ onChange1(frmDivVal)
 
     console.log(this.userHrmsIdForm.value['addHrmsId'])
 
-
-debugger
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "http://20.204.66.174:7788/userapi",
-      "method": "POST",
-      "headers": {
-        "key": "F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324",
-        "contenttype": "application/json",
-        "content-type": "application/json",
-        "cache-control": "no-cache",
-        "postman-token": "06157d3e-42c8-99f8-e058-cb73a6f4f83e"
-      },
-      "processData": false,
-      "data": "{\r\n        \"HRMS_ID\":1176123,\r\n        \"KEY\":\"F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324\"\r\n        }"
-    }
-    
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
-
-
-
-
-
-//     const headers = { 'key': 'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'}  
-//     let data:any;
-//     data= {
-//       "HRMS_ID":this.userHrmsIdForm.value['addHrmsId'],
-//       "KEY":'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
-//       }
-//     this.http.post('http://20.204.66.174:7788/userapi', data,{'headers':headers}).subscribe(res => {
-//       console.log(res);
+    const headers = { 'key': 'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'}  
+    let data:any;
+    data= {
+      "HRMS_ID":this.userHrmsIdForm.value['addHrmsId'],
+      "KEY":'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
+      }
+    this.http.post('https://gramawardsachivalayam.ap.gov.in/GSWSAPI/api/thirdparty/GSWSHRMSDATA', data,{'headers':headers}).subscribe(res => {
+      console.log(res);
       
-//       console.log("datat");
-//       console.log(res['result']);
-//       //console.log(res['result'][0]['DEPARTMENT']);
-//       if(res['Status'] == true)
-//       {
-//         this.hrmsData = res['result'];
+      console.log("datat");
+      console.log(res['result']);
+      //console.log(res['result'][0]['DEPARTMENT']);
+      if(res['Status'] == true)
+      {
+        this.hrmsData = res['result'];
         
-//         this.userRegForm = true;
-//         this.genericPoup = false;
-//         this.hrmsIDPopup = false;
-//         console.log('first========');
+        this.userRegForm = true;
+        this.genericPoup = false;
+        this.hrmsIDPopup = false;
+        console.log('first========');
 
 
 
 
-//       /* this.hrmsData= {
-//           'MOBILE':'9177057488',
-//           'EMP_MAIL_ID':'chakshu303@gmail.com',
-//           'EMP_NAME':'chakshu',
-//           'GENDER':'Male',
-//           'QUALIFICATION':'B-Tech',
-//           'DESIGNATION':'Software Eng',
-//           'DEPARTMENT':'Health, Medical & Family Welfare',
-//           "SECRETARIAT_NAME": "KOTAVURU",
-//           "SECRETARIAT_CODE": "11090984",
-//           "MANDAL_NAME": "B KOTHAKOTA",
-//           "DISTRICT_NAME": "CHITTOOR",
-//           "AGE":"10"
+      /* this.hrmsData= {
+          'MOBILE':'9177057488',
+          'EMP_MAIL_ID':'chakshu303@gmail.com',
+          'EMP_NAME':'chakshu',
+          'GENDER':'Male',
+          'QUALIFICATION':'B-Tech',
+          'DESIGNATION':'Software Eng',
+          'DEPARTMENT':'Health, Medical & Family Welfare',
+          "SECRETARIAT_NAME": "KOTAVURU",
+          "SECRETARIAT_CODE": "11090984",
+          "MANDAL_NAME": "B KOTHAKOTA",
+          "DISTRICT_NAME": "CHITTOOR",
+          "AGE":"10"
 
 
-//         }*/
+        }*/
 
-//        this.hrmsData= {
-//           'MOBILE':res['result'][0]['MOBILE'],
-//           'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
-//           'EMP_NAME':res['result'][0]['EMP_NAME'],
-//           'GENDER':res['result'][0]['GENDER'],
-//           'QUALIFICATION':res['result'][0]['QUALIFICATION'],
-//           'DESIGNATION':res['result'][0]['DESIGNATION'],
-//           'DEPARTMENT':res['result'][0]['DEPARTMENT'],
-//           "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME'],
-//           "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE'],
-//           "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
-//           "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
-//           "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
-//           "CFMS_ID":res['result'][0]['CFMS_ID']
+       this.hrmsData= {
+          'MOBILE':res['result'][0]['MOBILE'],
+          'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
+          'EMP_NAME':res['result'][0]['EMP_NAME'],
+          'GENDER':res['result'][0]['GENDER'],
+          'QUALIFICATION':res['result'][0]['QUALIFICATION'],
+          'DESIGNATION':res['result'][0]['DESIGNATION'],
+          'DEPARTMENT':res['result'][0]['DEPARTMENT'],
+          "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME'],
+          "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE'],
+          "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
+          "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
+          "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
+          "CFMS_ID":res['result'][0]['CFMS_ID']
           
-//         }
+        }
 
-//         if(this.hrmsData.MOBILE!=null)
-//         {
-//           this.editMobile = true;
-//         }
+        if(this.hrmsData.MOBILE!=null)
+        {
+          this.editMobile = true;
+        }
 
-//         if(this.hrmsData.EMP_NAME!=null)
-//         {
-//           this.editName = true;
-//         }
+        if(this.hrmsData.EMP_NAME!=null)
+        {
+          this.editName = true;
+        }
 
-//         if(this.hrmsData.HRMS_ID!=null)
-//         {
-//           this.hrmsIdData = true;
-//         }
-
-
-//         if(this.hrmsData.GENDER!=null)
-//         {
-//           this.genderData = true;
-//         }
-
-//         if(this.hrmsData.CFMS_ID!=null)
-//         {
-//           this.cfmsID = true;
-//         }
-
-//         if(this.hrmsData.SECRETARIAT_NAME!=null)
-//         {
-//           this.secName = true;
-//         }
-
-//         if(this.hrmsData.SECRETARIAT_CODE!=null)
-//         {
-//           this.secCode = true;
-//         }
-
-//         if(this.hrmsData.MANDAL_NAME!=null)
-//         {
-//           this.mandalName = true;
-//         }
-
-        
+        if(this.hrmsData.HRMS_ID!=null)
+        {
+          this.hrmsIdData = true;
+        }
 
 
-//         if(this.hrmsData.DISTRICT_NAME!=null)
-//         {
-//           this.districtName  = true;
-//         }
+        if(this.hrmsData.GENDER!=null)
+        {
+          this.genderData = true;
+        }
 
-//         if(this.hrmsData.QUALIFICATION!=null)
-//         {
-//           this.qualificationlist  = true;
-//         }
+        if(this.hrmsData.CFMS_ID!=null)
+        {
+          this.cfmsID = true;
+        }
 
-//         if(this.hrmsData.DESIGNATION!=null)
-//         {
-//           this.designation  = true;
-//         }
+        if(this.hrmsData.SECRETARIAT_NAME!=null)
+        {
+          this.secName = true;
+        }
+
+        if(this.hrmsData.SECRETARIAT_CODE!=null)
+        {
+          this.secCode = true;
+        }
+
+        if(this.hrmsData.MANDAL_NAME!=null)
+        {
+          this.mandalName = true;
+        }
 
         
 
 
-        
+        if(this.hrmsData.DISTRICT_NAME!=null)
+        {
+          this.districtName  = true;
+        }
 
-        
+        if(this.hrmsData.QUALIFICATION!=null)
+        {
+          this.qualificationlist  = true;
+        }
+
+        if(this.hrmsData.DESIGNATION!=null)
+        {
+          this.designation  = true;
+        }
 
         
 
 
         
 
+        
+
+        
+
+
+        
+
 
         
 
@@ -1399,35 +1373,35 @@ debugger
 
 
 
-//        /* this.hrmsData= {
-//           'MOBILE':res['result'][0]['MOBILE'],
-//           'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
-//           'EMP_NAME':res['result'][0]['EMP_NAME'],
-//           'GENDER':res['result'][0]['GENDER'],
-//           'QUALIFICATION':res['result'][0]['QUALIFICATION'],
-//           'DESIGNATION':res['result'][0]['DESIGNATION'],
-//           'DEPARTMENT':res['result'][0]['DEPARTMENT'],
-//           "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME'],
-//           "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE'],
-//           "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
-//           "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
-//           "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
-//           "CFMS_ID":res['result'][0]['CFMS_ID']
+       /* this.hrmsData= {
+          'MOBILE':res['result'][0]['MOBILE'],
+          'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
+          'EMP_NAME':res['result'][0]['EMP_NAME'],
+          'GENDER':res['result'][0]['GENDER'],
+          'QUALIFICATION':res['result'][0]['QUALIFICATION'],
+          'DESIGNATION':res['result'][0]['DESIGNATION'],
+          'DEPARTMENT':res['result'][0]['DEPARTMENT'],
+          "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME'],
+          "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE'],
+          "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
+          "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
+          "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
+          "CFMS_ID":res['result'][0]['CFMS_ID']
           
-//         }*/
-//       }
-//       else if(res['Status'] == false)
-//       {
-//         this.genericPoup = true;
-//         this.hrmsIDPopup = false;
-//         this.genericMsg ="Invalid HRMS ID";
-//         console.log('second========');
-//       }
-//       console.log("datat========");
-//   },err => {
-//     console.log("errrorrrrrr===");
-//     console.log(err.message);
-// })
+        }*/
+      }
+      else if(res['Status'] == false)
+      {
+        this.genericPoup = true;
+        this.hrmsIDPopup = false;
+        this.genericMsg ="Invalid HRMS ID";
+        console.log('second========');
+      }
+      console.log("datat========");
+  },err => {
+    console.log("errrorrrrrr===");
+    console.log(err.message);
+})
   }
 
 
