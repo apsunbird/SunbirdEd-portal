@@ -351,7 +351,6 @@
     }
   }
   $(function () {
-  debugger
     $("#popularCourseSection").on("click", ".small-bow", function () {
       location.href = '/explore-course/course/' + $(this).find('input').val();
     });
@@ -379,7 +378,6 @@
         processData: false,
         contentType: 'application/json',
         success: function (response) {
-          debugger
           console.log(response)
           var latestCourses = _.find(response.result.response.sections, { name: 'Popular Courses' });
           // latestCourses.contents = latestCourses.contents.slice(0,2)
@@ -445,7 +443,6 @@
   <script>
   function abcd()
   {
-  debugger
    $("#popularCourseSection").on("click", ".small-bow", function () {
       location.href = '/explore-course/course/' + $(this).find('input').val();
     });
