@@ -115,6 +115,7 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
   revDivVal: string;
   districtKey: string;
   joinDateData: { id: any; idType: string; provider: string; operation: string; };
+  hrmsResponse: Response;
   
   
 
@@ -224,7 +225,165 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
     this.signUpForm.disable();
     this.isP1CaptchaEnabled = (<HTMLInputElement>document.getElementById('p1reCaptchaEnabled'))
       ? (<HTMLInputElement>document.getElementById('p1reCaptchaEnabled')).value : 'true';
+
+
+     // this.gethrmsData();
   }
+
+
+  hrmsIdSubmit(){
+
+
+    
+    let data:any;
+    data= {
+      "HRMS_ID":this.userHrmsIdForm.value['addHrmsId'],
+      "KEY":'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
+      }
+  
+    this.http.post('https://apgsws.in/learner/user/v1/gethrmsData?HRMS_ID='+this.userHrmsIdForm.value['addHrmsId'], data).subscribe(res => {
+      console.log(res);
+     // this.hrmsData  = res;
+     this.userRegForm = true;
+     this.genericPoup = false;
+     this.hrmsIDPopup = false;
+      this.hrmsData= {
+        'MOBILE':res['result'][0]['MOBILE'],
+        'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
+        'EMP_NAME':res['result'][0]['EMP_NAME'],
+        'GENDER':res['result'][0]['GENDER'],
+        'QUALIFICATION':res['result'][0]['QUALIFICATION'],
+        'DESIGNATION':res['result'][0]['DESIGNATION'],
+        'DEPARTMENT':res['result'][0]['DEPARTMENT'],
+        "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME'],
+        "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE'],
+        "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
+        "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
+        "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
+        "CFMS_ID":res['result'][0]['CFMS_ID']
+        
+      }
+      console.log("datat");
+      console.log("datat========");
+  },err => {
+    console.log("errrorrrrrr===");
+    console.log(err.message);
+})
+
+  }
+
+  hrmsIdSubmit22(){  
+    this.tenantService.getHrmsData(this.userHrmsIdForm.value['addHrmsId'])
+    .subscribe((res: Response) => {
+      console.log(res);
+      
+      this.hrmsData  = res;
+        this.userRegForm = true;
+        this.genericPoup = false;
+        this.hrmsIDPopup = false;
+        console.log('first========');
+        if(this.hrmsData['status']==true)
+        {
+        if(this.hrmsData.MOBILE!=null)
+        {
+          this.editMobile = true;
+        }
+
+        if(this.hrmsData.EMP_NAME!=null)
+        {
+          this.editName = true;
+        }
+
+        if(this.hrmsData.HRMS_ID!=null)
+        {
+          this.hrmsIdData = true;
+        }
+
+
+        if(this.hrmsData.GENDER!=null)
+        {
+          this.genderData = true;
+        }
+
+        if(this.hrmsData.CFMS_ID!=null)
+        {
+          this.cfmsID = true;
+        }
+
+        if(this.hrmsData.SECRETARIAT_NAME!=null)
+        {
+          this.secName = true;
+        }
+
+        if(this.hrmsData.SECRETARIAT_CODE!=null)
+        {
+          this.secCode = true;
+        }
+
+        if(this.hrmsData.MANDAL_NAME!=null)
+        {
+          this.mandalName = true;
+        }
+
+        
+
+
+        if(this.hrmsData.DISTRICT_NAME!=null)
+        {
+          this.districtName  = true;
+        }
+
+        if(this.hrmsData.QUALIFICATION!=null)
+        {
+          this.qualificationlist  = true;
+        }
+
+        if(this.hrmsData.DESIGNATION!=null)
+        {
+          this.designation  = true;
+        }
+
+
+       this.hrmsData= {
+          'MOBILE':res['result'][0]['MOBILE'],
+          'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
+          'EMP_NAME':res['result'][0]['EMP_NAME'],
+          'GENDER':res['result'][0]['GENDER'],
+          'QUALIFICATION':res['result'][0]['QUALIFICATION'],
+          'DESIGNATION':res['result'][0]['DESIGNATION'],
+          'DEPARTMENT':res['result'][0]['DEPARTMENT'],
+          "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME'],
+          "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE'],
+          "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
+          "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
+          "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
+          "CFMS_ID":res['result'][0]['CFMS_ID']
+          
+        }
+     
+      }
+
+    else if(this.hrmsData['status']==false)
+      {
+        this.genericPoup = true;
+        this.hrmsIDPopup = false;
+        this.genericMsg ="Invalid HRMS ID";
+        console.log('second========');
+      }
+
+    });
+  
+
+
+
+    
+
+  }
+
+
+
+
+
 
   onChange(frmDistrictVal) {
   
@@ -1231,7 +1390,7 @@ onChange1(frmDivVal)
     this.location.back()
   }
 
-  hrmsIdSubmit()
+  hrmsIdSubmit1()
   {
 
     console.log(this.userHrmsIdForm.value['addHrmsId'])
@@ -1260,7 +1419,7 @@ onChange1(frmDivVal)
 
 
 
-      /* this.hrmsData= {
+       this.hrmsData= {
           'MOBILE':'9177057488',
           'EMP_MAIL_ID':'chakshu303@gmail.com',
           'EMP_NAME':'chakshu',
@@ -1275,9 +1434,9 @@ onChange1(frmDivVal)
           "AGE":"10"
 
 
-        }*/
+        }
 
-       this.hrmsData= {
+      /*  this.hrmsData= {
           'MOBILE':res['result'][0]['MOBILE'],
           'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
           'EMP_NAME':res['result'][0]['EMP_NAME'],
@@ -1292,7 +1451,7 @@ onChange1(frmDivVal)
           "HRMS_ID":res['result'][0]['DISTRICT_NAME'],
           "CFMS_ID":res['result'][0]['CFMS_ID']
           
-        }
+        }*/
 
         if(this.hrmsData.MOBILE!=null)
         {
