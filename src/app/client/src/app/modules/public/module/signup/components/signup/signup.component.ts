@@ -1401,7 +1401,7 @@ onChange1(frmDivVal)
       "HRMS_ID":this.userHrmsIdForm.value['addHrmsId'],
       "KEY":'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
       }
-    this.http.post('http://20.204.66.174:7788/userapi', data,{'headers':headers}).subscribe(res => {
+    this.http.post('https://gramawardsachivalayam.ap.gov.in/GSWSAPI/api/thirdparty/GSWSHRMSDATA', data,{'headers':headers}).subscribe(res => {
       console.log(res);
       
       console.log("datat");

@@ -7,8 +7,7 @@
   </ng-container>
 
   <!--Logged in user-->
-	<ng-container *ngIf="userService.loggedIn">
-
+	<!-- <ng-container *ngIf="userService.loggedIn">
 		<a class="item py-8 pl-0 pr-24" [class.active]="router.isActive('/workspace')" appTelemetryInteract
 			[telemetryInteractEdata]="workspaceMenuIntractEdata" *ngIf='!isDesktopApp && permissionService?.permissionAvailable'
 			appPermission [permission]='workSpaceRole' [routerLink]="[navigateToWorkspace()]" tabindex="0">
@@ -19,11 +18,11 @@
 			[permission]='workSpaceRole' href="/help/creator/content-lifecycle/index.html" target="_blank">
 			{{resourceService?.frmelmnts?.tab?.help}}
 		</a>
-	</ng-container>
+	</ng-container> -->
 	<!--/Logged in user-->
 
 	<!--Not Logged in user-->
-	<ng-container *ngIf="!userService.loggedIn">
+	<!-- <ng-container *ngIf="!userService.loggedIn">
 		<button class="ui blue button" *ngIf="router.isActive('', true) && exploreButtonVisibility==='true'"
 			tabindex="0" [routerLink]="'/explore'">
 			{{resourceService.frmelmnts?.lbl?.explore}} {{resourceService.instance}}
@@ -32,7 +31,7 @@
 			[telemetryInteractEdata]="signInIntractEdata">
 			{{resourceService.frmelmnts?.btn?.login}}
 		</a>
-	</ng-container>
+	</ng-container> -->
 	<!--/Not Logged in user-->
 
 </div>
