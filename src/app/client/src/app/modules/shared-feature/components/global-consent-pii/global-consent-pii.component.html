@@ -42,15 +42,15 @@
   </sui-accordion-panel>
 </sui-accordion>
 
-<sui-modal [mustScroll]="true" [isClosable]="false" [transitionDuration]="0" [size]="'normal'"
+<!-- <sui-modal [mustScroll]="true" [isClosable]="false" [transitionDuration]="0" [size]="'normal'"
   class="sb-modal" appBodyScroll *ngIf="showConsentPopup"
   (dismissed)="showConsentPopup = false;" #profileDetailsModal>
-  <!--Header-->
+
   <div class="sb-modal-header lineHeight-normal">
     {{resourceService?.frmelmnts?.lbl?.profileDetails}}
   </div>
-  <!--/Header-->
-  <!--Content-->
+  
+  
   <div class="sb-modal-content d-flex flex-dc o-y-visible lineHeight-normal">
     <div class="ui stackable grid m-0">
       <div class="three wide column px-0">
@@ -92,15 +92,14 @@
       <a class="sb-color-primary" href="javascript:void(0)" (click)="showTncPopup=true">{{consentConfig.tncLink | interpolate:'{instance}': resourceService?.instance}}</a>
     </p>
   </div>
-  <!--/Content-->
-  <!--Actions-->
+  
   <div class="sb-modal-actions">
     <button type="button" [ngClass]="{'sb-btn-disabled': !isTncAgreed}" [disabled]="!isTncAgreed" class="sb-btn sb-btn-normal sb-btn-primary text-uppercase" (click)="updateUserConsent(true)" *ngIf="type === 'course-consent'">{{resourceService?.frmelmnts?.lbl?.share}}</button>
     <button class="sb-btn sb-btn-normal sb-btn-outline-primary text-uppercase" (click)="updateUserConsent(false)" *ngIf="type === 'course-consent'">{{resourceService?.frmelmnts?.lbl?.dontShare}}</button>
     <button type="button" [ngClass]="{'sb-btn-disabled': !isTncAgreed}" [disabled]="!isTncAgreed" class="sb-btn sb-btn-normal sb-btn-primary text-uppercase" (click)="updateUserConsent(true)" *ngIf="type === 'global-consent'">{{resourceService?.frmelmnts?.lbl?.continue}}</button>
   </div>
-  <!--/Actions-->
-</sui-modal>
+  
+</sui-modal> -->
 
 <app-tnc-popup (close)="showAndHidePopup(false)" [tncUrl]="termsAndConditionLink" *ngIf="showTncPopup">
 </app-tnc-popup>
