@@ -237,7 +237,7 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
       "HRMS_ID":this.userHrmsIdForm.value['addHrmsId'],
       "KEY":'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
       }
-    this.http.post('http://localhost:3000/learner/user/v1/gethrmsData?HRMS_ID='+this.userHrmsIdForm.value['addHrmsId'], data).subscribe(res => {
+    this.http.post('https://apgsws.in/learner/user/v1/gethrmsData?HRMS_ID='+this.userHrmsIdForm.value['addHrmsId'], data).subscribe(res => {
       console.log(res);
       console.log(res['status']);
     
