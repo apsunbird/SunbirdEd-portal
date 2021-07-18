@@ -48,7 +48,7 @@
  
  
  
-   function getHRMSdATA(req, res) {
+  function getHRMSdATA(req, res) {
      
        console.log("cha================================");
       // let data = JSON.parse(req.toString('utf8'));
@@ -58,19 +58,13 @@
      const obj = JSON.parse(str);
  
     // console.log(obj.originalUrl);
- 
      console.log(unserialized.originalUrl);
- 
      console.log(unserialized.query.HRMS_ID);
- 
-    // return false;
-       
+    // return false; 
      const axios = require('axios');
- 
      var dataToPost = {
         HRMS_ID: unserialized.query.HRMS_ID,
      // HRMS_ID:  '1176123',
-     
       Key: 'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
      };
     
@@ -84,32 +78,20 @@
      var rtxt={};
      axios.post('https://gramawardsachivalayam.ap.gov.in/GSWSAPI/api/thirdparty/GSWSHRMSDATA', dataToPost, axiosConfiguration)
      .then((res1) => {
-       console.log("Response: ", res1);
-       console.log("dsdddddddddddddddddddddd====");
-       console.log("Response: ", res1.status);
-       console.log("Response  New : ", res1.data.result);
-       
-       rtxt.responseCode = 200;
-       rtxt.result =  res1.data.result;
-       rtxt.response='SUCCESS';
-      
- 
- 
-      rtxt.status ="OK";
-       // callback(null,rtxt);
- 
-        //res.send(rtxt);
- 
-        //res.send(rtxt);
+      // console.log("Response: ", res1);
+      // console.log("dsdddddddddddddddddddddd====");
+       //console.log("status==============: ", res1.data.status);
+       //console.log("Response  New : ", res1.data.result);
+       //console.log("Response  New : ", res1.data.result.length);
+        rtxt.responseCode = 200;
+        rtxt.result =  res1.data.result;
+        rtxt.response='SUCCESS';
+        rtxt.status =res1.data.Status;
         res.json(rtxt);
      })
      .catch((err) => {
        console.log("error: ", err);
-     })
-     
-       console.log("chakkkkkkkkkkkkkkkkkkkk");
-       ///console.log(data);
-     
+     })  
    }
  
  
