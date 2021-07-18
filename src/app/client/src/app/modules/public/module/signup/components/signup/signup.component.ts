@@ -241,7 +241,7 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
       "KEY":'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
       }
   
-    this.http.post('http://localhost:3000/learner/user/v1/gethrmsData?HRMS_ID='+this.userHrmsIdForm.value['addHrmsId'], data).subscribe(res => {
+    this.http.post('https://apgsws.in/learner/user/v1/gethrmsData?HRMS_ID='+this.userHrmsIdForm.value['addHrmsId'], data).subscribe(res => {
       console.log(res);
      // this.hrmsData  = res;
      this.userRegForm = true;
@@ -1469,7 +1469,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['hrmsID'], 
         "idType":"HRMSID", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
     
@@ -1480,7 +1480,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['cfmsID'], 
         "idType":"CFMSID", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
    
@@ -1489,7 +1489,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['secCode'], 
         "idType":"SECCODE", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
    
@@ -1498,7 +1498,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['secName'], 
         "idType":"SECNAME", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
 
@@ -1507,7 +1507,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['dob'], 
         "idType":"DOB", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
     
@@ -1516,7 +1516,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['jobName'], 
         "idType":"JOBNAME", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
 
@@ -1525,7 +1525,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['designation'], 
         "idType":"DESIGNTAION", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
 
@@ -1534,7 +1534,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['education'], 
         "idType":"EDUCATION", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       }
 
@@ -1547,7 +1547,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['emailId'], 
         "idType":"EMAILID", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       } 
 
@@ -1556,7 +1556,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['mobileNumber'], 
         "idType":"MOBILENUMBER", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       } 
 
@@ -1565,7 +1565,7 @@ onChange1(frmDivVal)
       {
         "id":this.userRegistration.value['joinDate'], 
         "idType":"JOINDATE", 
-        "provider": "gsws",
+        "provider": "GSWS-test",
         "operation":"add"
       } 
 
@@ -1626,7 +1626,7 @@ onChange1(frmDivVal)
     //"userName":this.userRegistration.value['fName']+'_'+this.userRegistration.value['lName'],
      "userName":this.userRegistration.value['hrmsID'],
    // "education":edu,
-    "channel":'gsws',
+    "channel":'GSWS-test',
     "emailVerified": true,
     "phoneVerified":true
   }
