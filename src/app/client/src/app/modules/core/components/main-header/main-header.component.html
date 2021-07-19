@@ -426,7 +426,7 @@
           </div>
         </div> -->
 
-        <div appOnlineOnly (click)="toggleSideMenu(false);navigate('/profile/create-managed-user')" class="add-user mb-16"
+        <!--<div appOnlineOnly (click)="toggleSideMenu(false);navigate('/profile/create-managed-user')" class="add-user mb-16"
           *ngIf="totalUsersCount <1">
           <div class="add-user__icon">
             <img src="assets/images/user-circle.svg" alt="Add user">
@@ -434,7 +434,7 @@
           <div class="add-user__label fnormal sb-color-secondary">
             {{resourceService.frmelmnts?.lbl?.addUser}}
           </div>
-        </div>
+        </div>-->
 
         <div appOnlineOnly class="d-flex flex-w-wrap">
           <sb-member-list [layoutConfig]=memberCardConfig [memberList]="userListToShow" [isMenu]="false"
