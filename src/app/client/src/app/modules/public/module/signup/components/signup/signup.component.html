@@ -121,7 +121,6 @@ Create User
 </div>
 </div>-->
 
-
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">HRMS ID/Employee ID<span class="sb-color-warning">*</span></label>
@@ -155,6 +154,8 @@ Create User
 
 
 
+
+
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">DOB<span class="sb-color-warning">*</span></label>
@@ -169,11 +170,12 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Gender<span class="sb-color-warning">*</span></label>
-                <sui-select class="selection sb-form-control" formControlName="gender" [(ngModel)]="hrmsData.GENDER" [options]="gender" [attr.disabled]=genderData 
-                  [placeholder]="'Select Gender'" labelField="name" valueField="name" #genderList> 
-                  <sui-select-option *ngFor="let option of genderList.filteredOptions" [value]="option">
-                  </sui-select-option>
-                </sui-select>
+               <select  class="selection sb-form-control" formControlName="gender" [(ngModel)]="hrmsData.GENDER" [attr.disabled]=genderData>
+                  <option value="null">Select Gender</option>
+                  <option  value="MALE">Male</option>  
+                  <option  value="FEMALE">Female</option>  
+                  <option  value="OTHERS">Others</option> 
+                </select>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.gender.invalid && userRegistration.controls['gender'].errors.required  && !userRegistration.controls['gender'].pristine">
                   Select gender
                 </div>

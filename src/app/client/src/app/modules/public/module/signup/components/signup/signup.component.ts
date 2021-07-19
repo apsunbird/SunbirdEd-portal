@@ -139,7 +139,7 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
     })
 
 
-    this.gender = [{name:'Male',option:'Male'},{name:'Female',option:'Female'}]
+    //this.gender = [{name:'Male',option:'Male'},{name:'Female',option:'Female'}]
 
     this.userRegistration = this.fb.group({
       mobileNumber: new FormControl(null,[Validators.required,Validators.pattern(this._validation.mobileno)]),
