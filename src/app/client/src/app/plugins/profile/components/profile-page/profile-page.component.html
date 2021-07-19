@@ -1,7 +1,9 @@
+ 
 <app-landing-section [textToDisplay]=""
 [layoutConfiguration]="{}" [noTitle]="true"></app-landing-section>
-<div [ngClass]="layoutConfiguration ? 'relative9' : ''">
+<div [ngClass]="layoutConfiguration ? 'relative9' : ''" style="float:left;">
 <div [appTelemetryImpression]="telemetryImpression" *ngIf="userProfile">
+  
   <section class="py-24 d-flex flex-ai-center flex-dc">
     <div class="ui container">
       <div class="mb-15 d-flex flex-jc-center relative avatar-container" >
@@ -18,10 +20,26 @@
        </ngx-avatar>
       </div>
     </div>
-    <div class="profile-user-label font-w-bold d-flex text-center relative position">{{userProfile.firstName | titlecase}} {{userProfile.lastName |
+    <!--<div class="profile-user-label font-w-bold d-flex text-center relative position">{{userProfile.firstName | titlecase}} {{userProfile.lastName |
       titlecase}}
+    </div>-->
+
+
+    <div class="profile-user-label font-w-bold d-flex text-center relative position">{{userProfile.firstName | titlecase}}
     </div>
-    <div class="mt-8 mb-16 d-flex flex-jc-center">
+
+    <div class="profile-user-label font-w-bold d-flex text-center relative position">{{emailld}}
+    </div>
+
+    <div class="profile-user-label font-w-bold d-flex text-center relative position">{{mobileNumber}}
+    </div>
+
+    <div class="profile-user-label font-w-bold d-flex text-center relative position"> <span class="ui dodger-blue basic label mr-15 mt-5">{{rolesData}}</span>
+    </div>
+  
+  
+
+    <!--<div class="mt-8 mb-16 d-flex flex-jc-center">
       <div class="fnormal">{{resourceService?.frmelmnts?.lbl?.instacnceId | interpolate:'{instance}': instance}} :</div>
       <div class="fnormal ml-5" id="copyUser">{{userProfile.userName}}</div>
       <div class="ml-8 cursor-pointer" (click)="copyToClipboard(userProfile.userName)" suiPopup popupText="{{resourceService.frmelmnts?.lbl?.copyid | interpolate:'{instance}': instance}}" [popupInverted]="true" [popupPlacement]="'bottom left'">
@@ -33,7 +51,68 @@
         <span class="sb-color-primary">{{resourceService?.frmelmnts?.lbl?.copy}}</span>
       </div>
 
-    </div>
+    </div>-->
+
+
+
+        <table  id="downloadTable" style="float:right;" class="sb-table sb-table-striped sb-table-sortable sb-table-fixed sb-table-course-dashboard"
+        cellspacing="0">
+        <tbody class="sb-table-body">
+          <tr>
+            <td><b>Age </b></td>
+            <td>{{age}}</td>
+           
+                <td><b>DOB</b> </td>
+                <td>{{dobdata}}</td>
+                </tr>
+                <tr>
+                <td><b>Gender</b></td>
+                <td>{{genderData}}</td>
+               
+                <td><b>Education</b></td>
+                <td>{{eduCation}}</td>
+                </tr>
+                <tr>
+                <td><b>Job Profile</b> </td>
+                <td>{{jobProfileCode}}</td>
+                
+                <td><b>Joining Date</b> </td>
+                <td>{{joinDate}}</td>
+                </tr>
+                <tr>
+                <td><b>HRMS ID/Employee ID</b> </td>
+                <td>{{hrmsId}}</td>
+               
+                <td><b>CFMS ID</b></td>
+                <td>{{cfmsId}}</td>
+                </tr>
+
+                <tr>
+                  <td><b>Secretariat Name</b></td>
+                <td>{{secName}}</td>
+               
+            <td><b>Secretariat Code</b></td>
+                <td>{{secCode}}</td>
+                </tr>
+
+
+
+                <tr>
+                  <td><b>Mandal/ULB</b></td>
+                <td>{{mandal}}</td>
+               
+                <td><b>Revenue Division</b></td>
+                <td>{{revDiv}}</td>
+                </tr>
+
+                <tr>
+                  <td><b>District</b></td>
+                <td>{{districtName}}</td>
+                </tr>
+        </tbody>
+      </table>
+     
+      
     <div class="mb-15 text-center profile-label-container" *ngIf="roles && roles.length > 0">
       <span class="ui dodger-blue basic label mr-15 mt-5"
         *ngFor="let role of roles | slice:0:showMoreRolesLimit">{{role}}</span>
@@ -92,7 +171,7 @@
         <div class="fmedium ml-5 font-w-bold text-center">
           {{userLocation.state.name}}</div>
       </div>
-      <div class="d-flex flex-dc flex-jcc-center flex-ai-center">
+      <!--<div class="d-flex flex-dc flex-jcc-center flex-ai-center">
         <button appTelemetryInteract appOnlineOnly
           [telemetryInteractEdata]="editProfileInteractEdata"
           class="sb-btn sb-btn-primary sb-btn-normal sb-btn-border my-16"
@@ -103,7 +182,7 @@
                 (click)="navigate('/profile/teacher-declaration','submit')"
                 class="no-text-transform sb-btn sb-btn-normal sb-btn-secondary sb-right-icon-btn mx-8 mb-8 px-24" type="submit">
         {{resourceService?.frmelmnts?.lbl?.iAmStateTeacher}} </button>
-      </div>
+      </div>-->
     </div>
     <!-- <div class="ui container" *ngIf="!isCustodianOrgUser">
       <div class="d-flex flex-dc flex-jcc-center flex-ai-center">
@@ -144,7 +223,7 @@
     </div> -->
   </section>
 
-  <section class="pt-30 pb-30 d-flex flex-jc-center profile-bg-c-3" *ngIf="userProfile.email || userProfile.phone">
+ <!-- <section class="pt-30 pb-30 d-flex flex-jc-center profile-bg-c-3" *ngIf="userProfile.email || userProfile.phone">
     <div class="d-flex flex-dc">
       <div class="d-flex flex-jc-center">
         <div appOnlineOnly (click)="showContactPopup=true;contactType='phone'"
@@ -172,10 +251,10 @@
       [telemetryInteractEdata]="editEmailInteractEdata">
       <i class="mail icon mr-5"></i> {{resourceService?.frmelmnts?.lbl?.addEmailID}}
     </div>
-     </div>
+     </div>-->
 
       <!-- Add/edit recovery email/phone-->
-    <div class="d-flex flex-jc-center">
+    <!--<div class="d-flex flex-jc-center">
       <div appOnlineOnly *ngIf="userProfile.recoveryEmail || userProfile.recoveryPhone" (click)="showRecoveryId=true; mode='edit'" class="ui semi-circular dodger-blue basic label cursor-pointer mb-15 d-flex"
       appTelemetryInteract
       [telemetryInteractEdata]="editRecoveryIdInteractEdata">
@@ -191,7 +270,7 @@
        </div>
      </div>
     </div>
-  </section>
+  </section>-->
 
   <section class="d-flex flex-ai-center flex-dc pt-30 pb-30 profile-bg-c-4">
     <!-- User info computer view starts-->
@@ -259,7 +338,7 @@
   </section>
 
   <!-- 4 section start teacher profile-->
-  <section class="pt-30 pb-30 d-flex flex-jc-center profile-bg-c-3" *ngIf="declarationDetails && !userProfile.stateValidated">
+  <!--<section class="pt-30 pb-30 d-flex flex-jc-center profile-bg-c-3" *ngIf="declarationDetails && !userProfile.stateValidated">
   <div class="flex-ai-jc-center flex-dc text-center school-id-section">
     <div class="self-declared-title">{{resourceService.frmelmnts?.lbl?.selfDeclaredInfo}}</div>
       <div>
@@ -277,7 +356,7 @@
       </div>
 
     </div>
-  </section>
+  </section>-->
   <!-- 4 section end -->
 
   <!-- my badges section starts -->

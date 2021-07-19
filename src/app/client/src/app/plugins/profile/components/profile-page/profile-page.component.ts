@@ -35,6 +35,7 @@ import { FieldConfig, FieldConfigOption } from 'common-form-elements';
   providers: [CertificateDownloadAsPdfService]
 })
 export class ProfilePageComponent implements OnInit, OnDestroy, AfterViewInit {
+  [x: string]: any;
   private static readonly SUPPORTED_PERSONA_LIST_FORM_REQUEST =
   { formType: 'config', formAction: 'get', contentType: 'userType', component: 'portal' };
   private static readonly DEFAULT_PERSONA_LOCATION_CONFIG_FORM_REQUEST =
@@ -95,6 +96,24 @@ export class ProfilePageComponent implements OnInit, OnDestroy, AfterViewInit {
   persona: {};
   subPersona: string;
   isConnected = true;
+  nameArr: any;
+  districtName: any;
+  gender: any=null;
+  dob: any=null;
+  hrmsId: any=null;
+  cfmsId: any=null;
+  mandal: any=null;
+  revDiv: any=null;
+  rolesData: any=null;
+  secName: any=null;
+  secCode: any=null;
+  ageCode: any=null;
+  emailld:any=null;
+  mobileNumber:any=null;
+  age:any=null;
+  dobdata:any=null;
+  joinDate:any=null;
+  genderData:any=null;
 
   constructor(@Inject('CS_COURSE_SERVICE') private courseCService: CsCourseService, private cacheService: CacheService,
   public resourceService: ResourceService, public coursesService: CoursesService,
@@ -126,6 +145,183 @@ export class ProfilePageComponent implements OnInit, OnDestroy, AfterViewInit {
       /* istanbul ignore else */
       if (user.userProfile) {
         this.userProfile = user.userProfile;
+        console.log("User Profile data==================");
+        console.log(this.userProfile);
+        console.log(this.userProfile.lastName);
+        this.gender = this.userProfile.gender;
+        this.dob = this.userProfile.dob;
+        console.log(this.userProfile['organisations'][0]['roles']);
+        console.log(this.userProfile['organisations'][0]['roles'].join(", "));
+
+        this.rolesData = this.userProfile['organisations'][0]['roles'].join(", ");
+        if(this.userProfile.lastName!=null)
+        {
+        this.nameArr = this.userProfile.lastName.split('$#$#')
+
+
+        if(this.nameArr[11]!=null && this.nameArr[11]!="undefined")
+        {
+          this.emailld = this.nameArr[11];
+        }
+        else
+        {
+          this.emailld = null;
+        }
+
+
+
+        if(this.nameArr[12]!=null && this.nameArr[12]!="undefined")
+        {
+          this.mobileNumber = this.nameArr[12];
+        }
+        else
+        {
+          this.mobileNumber = null;
+        }
+
+
+        if(this.nameArr[4]!=null && this.nameArr[4]!="undefined")
+        {
+          this.age = this.nameArr[4];
+        }
+        else
+        {
+          this.age = null;
+        }
+
+
+        if(this.nameArr[13]!=null && this.nameArr[13]!="undefined")
+        {
+          this.dobdata = this.nameArr[13];
+        }
+        else
+        {
+          this.dobdata = null;
+        }
+
+
+        if(this.nameArr[14]!=null && this.nameArr[14]!="undefined")
+        {
+          this.joinDate = this.nameArr[14];
+        }
+        else
+        {
+          this.joinDate = null;
+        }
+
+
+        if(this.nameArr[15]!=null && this.nameArr[15]!="undefined")
+        {
+          this.genderData = this.nameArr[15];
+        }
+        else
+        {
+          this.genderData = null;
+        }
+
+
+
+        if(this.nameArr[0]!=null && this.nameArr[0]!="undefined")
+        {
+          this.hrmsId = this.nameArr[0];
+        }
+        else
+        {
+          this.hrmsId = null;
+        }
+
+        if(this.nameArr[1]!=null && this.nameArr[1]!="undefined")
+        {
+          this.cfmsId = this.nameArr[1];
+        }
+        else
+        {
+          this.cfmsId = null;
+        }
+
+        if(this.nameArr[8]!=null && this.nameArr[8]!="undefined")
+        {
+          this.mandal = this.nameArr[8];
+        }
+        else
+        {
+          this.mandal = null;
+        }
+
+
+        if(this.nameArr[3]!=null && this.nameArr[3]!="undefined")
+        {
+          this.secName = this.nameArr[3];
+        }
+        else
+        {
+          this.secName = null;
+        }
+
+
+        if(this.nameArr[2]!=null && this.nameArr[2]!="undefined")
+        {
+          this.secCode = this.nameArr[2];
+        }
+        else
+        {
+          this.secCode = null;
+        }
+
+
+        if(this.nameArr[4]!=null && this.nameArr[4]!="undefined") 
+        {
+          this.ageCode = this.nameArr[4];
+        }
+        else
+        {
+          this.ageCode = null;
+        }
+       console.log("age==================");
+       console.log(this.age);
+       console.log(this.ageCode);
+
+        if(this.nameArr[5]!=null && this.nameArr[5]!="undefined")
+        {
+          this.jobProfileCode = this.nameArr[5];
+        }
+        else
+        {
+          this.jobProfileCode = null;
+        }
+
+
+        if(this.nameArr[6]!=null && this.nameArr[6]!="undefined")
+        {
+          this.eduCation = this.nameArr[6];
+        }
+        else
+        {
+          this.eduCation = null;
+        }
+
+
+
+        if(this.nameArr[9]!=null && this.nameArr[9]!="undefined")
+        {
+          this.revDiv = this.nameArr[9];
+        }
+        else
+        {
+          this.revDiv = null;
+        }
+
+
+
+        if(this.nameArr[10]!=null && this.nameArr[10]!="undefined")
+        {
+          this.districtName = this.nameArr[10];
+        }
+        else
+        {
+          this.districtName = null;
+        }
+        }
         const role: string = (!this.userProfile.userType ||
           (this.userProfile.userType && this.userProfile.userType === 'OTHER')) ? '' : this.userProfile.userType;
         this.userLocation = this.getUserLocation(this.userProfile);
