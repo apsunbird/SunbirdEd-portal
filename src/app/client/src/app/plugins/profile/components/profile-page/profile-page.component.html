@@ -1,7 +1,7 @@
  
 <app-landing-section [textToDisplay]=""
 [layoutConfiguration]="{}" [noTitle]="true"></app-landing-section>
-<div [ngClass]="layoutConfiguration ? 'relative9' : ''" style="float:left;">
+<div [ngClass]="layoutConfiguration ? 'relative9' : ''">
 <div [appTelemetryImpression]="telemetryImpression" *ngIf="userProfile">
   
   <section class="py-24 d-flex flex-ai-center flex-dc">
@@ -55,7 +55,7 @@
 
 
 
-        <table  id="downloadTable" style="float:right;" class="sb-table sb-table-striped sb-table-sortable sb-table-fixed sb-table-course-dashboard"
+        <table  id="downloadTable"  class="sb-table sb-table-striped sb-table-sortable sb-table-fixed sb-table-course-dashboard"
         cellspacing="0">
         <tbody class="sb-table-body">
           <tr>
@@ -119,7 +119,7 @@
       </table>
      
       
-    <div class="mb-15 text-center profile-label-container" *ngIf="roles && roles.length > 0">
+    <!--<div class="mb-15 text-center profile-label-container" *ngIf="roles && roles.length > 0">
       <span class="ui dodger-blue basic label mr-15 mt-5"
         *ngFor="let role of roles | slice:0:showMoreRolesLimit">{{role}}</span>
     </div>
@@ -148,10 +148,10 @@
     </div>
   </div>
     <div class="fs-1-5 font-w-bold d-flex mb-8 text-center org-info" *ngIf=" orgDetails && orgDetails.orgName">{{orgDetails.orgName}}
-    </div>
+    </div>-->
 
     <!-- add state and district -->
-    <div class="ui container">
+    <!--<div class="ui container">
       <div *ngIf="userLocation?.school && userLocation?.school?.name" class="mb-0 d-flex flex-jc-center m-responsive-flex-dc m-responsive-mt-15">
         <div class="fmedium text-center">{{resourceService.frmelmnts.lbl.school}} :</div>
         <div class="fmedium ml-5 font-w-bold text-center">
@@ -176,7 +176,7 @@
         <div class="fmedium text-center">{{resourceService.frmelmnts.lbl.state}} :</div>
         <div class="fmedium ml-5 font-w-bold text-center">
           {{userLocation.state.name}}</div>
-      </div>
+      </div>-->
       <!--<div class="d-flex flex-dc flex-jcc-center flex-ai-center">
         <button appTelemetryInteract appOnlineOnly
           [telemetryInteractEdata]="editProfileInteractEdata"
@@ -189,7 +189,7 @@
                 class="no-text-transform sb-btn sb-btn-normal sb-btn-secondary sb-right-icon-btn mx-8 mb-8 px-24" type="submit">
         {{resourceService?.frmelmnts?.lbl?.iAmStateTeacher}} </button>
       </div>-->
-    </div>
+   <!-- </div>-->
     <!-- <div class="ui container" *ngIf="!isCustodianOrgUser">
       <div class="d-flex flex-dc flex-jcc-center flex-ai-center">
         <button appTelemetryInteract
@@ -371,15 +371,15 @@
   <app-profile-badge *ngIf="userProfile.badgeAssertions && userProfile.badgeAssertions.length > 0"></app-profile-badge>
   <!-- my badges section ends -->
 
-  <div class="pt-30">
-    <div class="sb-profile-page-container" [ngClass]="layoutConfiguration ? 'sbt-center-container' : 'ui container'">
+  <!--<div class="pt-30">
+    <div class="sb-profile-page-container" [ngClass]="layoutConfiguration ? 'sbt-center-container' : 'ui container'">-->
       <!--contributions view starts-->
-      <div class="fs-1-7 font-w-bold pl-20 mobile only" *ngIf="contributions && contributions.length > 0">
+      <!--<div class="fs-1-7 font-w-bold pl-20 mobile only" *ngIf="contributions && contributions.length > 0">
         {{resourceService.frmelmnts.scttl.contributions}}
         ({{totalContributions}})&#x200E;</div>
-      <div class="ui divider my-5 mobile only"></div>
+      <div class="ui divider my-5 mobile only"></div>-->
       <!--contributions computer view starts-->
-      <div class="ui segments" *ngIf="contributions && contributions.length > 0">
+     <!-- <div class="ui segments" *ngIf="contributions && contributions.length > 0">
         <div class="ui segment computer only">
           <div class="fs-1-7 pl-10 font-w-bold">{{resourceService.frmelmnts.scttl.contributions}}
             ({{totalContributions}})&#x200E;</div>
@@ -390,11 +390,11 @@
               (playEvent)="openContent($event)"></app-page-section>
           </div>
         </div>
-      </div>
+      </div>-->
       <!--contributions computer view ends-->
       <!--contributions view ends-->
       <!-- tarainings attended computer view strats-->
-      <div class="container my-16 sb-certificate-trained" *ngIf="attendedTraining && attendedTraining.length">
+      <!--<div class="container my-16 sb-certificate-trained" *ngIf="attendedTraining && attendedTraining.length">
           <div class="list-heading">
             <label class="mb-0">{{resourceService?.frmelmnts?.lbl?.myLearning}}({{attendedTraining.length}})&#x200E;</label>
             <span class="fsmall mt-4 font-weight-bold">&nbsp;({{resourceService?.frmelmnts?.lbl?.refreshedDaily}})</span>
@@ -443,11 +443,11 @@
               (click)="toggleCourse(false, attendedTraining.length)" *ngIf="!showMoreTrainings">{{resourceService.frmelmnts.lbl.viewless}}<i
                 class="chevron up icon"></i></button>
           </div>
-        </div>
+        </div>-->
          <!-- trainings attended computer view ends-->
 
          <!-- certificates-->
-        <div class="container my-16 sb-certificate-trained" id="learner-passbook" *ngIf="otherCertificates && otherCertificates.length">
+       <!-- <div class="container my-16 sb-certificate-trained" id="learner-passbook" *ngIf="otherCertificates && otherCertificates.length">
           <div class="list-heading">
             <label class="mb-0">{{resourceService.frmelmnts?.lbl?.learnerPassbook }}&#x200E;</label>
           </div>
@@ -485,25 +485,25 @@
               (click)="toggleOtherCertific(false)" *ngIf="!showMoreCertificates">{{resourceService.frmelmnts.lbl.viewless}}<i
                 class="chevron up icon"></i></button>
           </div>
-        </div>
+        </div>-->
         <!-- / certificates-->
-      </div>
-  </div>
+       <!--</div>
+  </div>-->
 </div>
 </div>
-<app-popup *ngIf="showEdit" #profileModal [formInput]="userFrameWork" [showCloseIcon]="true" [isClosable]="true"
+<!--<app-popup *ngIf="showEdit" #profileModal [formInput]="userFrameWork" [showCloseIcon]="true" [isClosable]="true"
   [buttonLabel]="resourceService.frmelmnts.btn.submit" (submit)="updateProfile($event)" (close)="showEdit = !showEdit">
 </app-popup>
 <app-update-contact-details *ngIf="showContactPopup" (close)="showContactPopup = !showContactPopup"
   [contactType]="contactType"></app-update-contact-details>
   <app-location-selection
     (close)="showEditUserDetailsPopup = !showEditUserDetailsPopup"
-    *ngIf="showEditUserDetailsPopup">
+    *ngIf="showEditUserDetailsPopup">-->
 
-    <div slot="popup-sub-header">
+    <!--<div slot="popup-sub-header">
       <p class="subtitle">{{resourceService?.frmelmnts?.lbl?.editPersonalDetails}}&lrm;</p>
-    </div>
-  </app-location-selection>
-  <app-account-recovery-info *ngIf="showRecoveryId" [mode]="mode" (close)="showRecoveryId = !showRecoveryId"></app-account-recovery-info>
+    </div>-->
+  <!--</app-location-selection>
+  <app-account-recovery-info *ngIf="showRecoveryId" [mode]="mode" (close)="showRecoveryId = !showRecoveryId"></app-account-recovery-info>-->
 <router-outlet></router-outlet>
 
