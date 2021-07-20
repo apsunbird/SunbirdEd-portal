@@ -1,14 +1,11 @@
 <sui-modal [mustScroll]="false" [isClosable]="tncUrl ? true : false" [transitionDuration]="0" [size]="'large'" class="sb-modal sb-modal-termscondition" #modal 
 (dismissed)="tncUrl ? onClose() : ''">
 
-  <!--Header-->
-  <div class="sb-modal-header">
+  <!-- <div class="sb-modal-header">
     {{resourceService?.frmelmnts?.lbl?.termsAndCond}}&lrm;
-  </div>
-  <!--/Header-->
-
-  <!--Content-->
-  <div class="sb-modal-content pl-0 pr-8">
+  </div> -->
+ 
+  <!-- <div class="sb-modal-content pl-0 pr-8">
     <div class="d-flex flex-jc-center mb-10 terms-modal-logo">
       <img class="image centered" alt={{tenantName}} height="45" src="{{logo}}">
     </div>
@@ -22,17 +19,15 @@
     <label *ngIf="!tncUrl || showAcceptTnc" class="d-flex flex-jc-center flex-ai-center mt-16 mb-0">
       <input type="checkbox" role="checkbox" [(ngModel)]="tncChecked" value="true" (click)="onClickCheckbox(tncChecked)" class="mr-10 cursor-pointer"><span> {{resourceService?.frmelmnts?.lbl?.termsAndCondAgree}}</span>
     </label>
-  </div>
+  </div> -->
 
-  <!--/Content-->
-
-  <!--Actions-->
-  <div class="sb-modal-actions">
+ 
+  <!-- <div class="sb-modal-actions">
     <button class="sb-btn sb-btn-normal sb-btn-primary" [ngClass]="tncChecked ? '' : 'sb-btn-disabled'"
       [disabled]="!disableContinueBtn" (click)="onSubmitTnc()" *ngIf="!tncUrl || showAcceptTnc">
       {{resourceService?.frmelmnts?.lbl?.continue}}
     </button>
-  </div>
-  <!--/Actions-->
+  </div> -->
+  
 
 </sui-modal>

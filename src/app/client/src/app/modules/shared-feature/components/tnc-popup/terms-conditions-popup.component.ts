@@ -65,12 +65,15 @@ export class TermsAndConditionsPopupComponent implements OnInit, OnDestroy {
         }
       }
     );
+    this.onSubmitTnc();
   }
+
 
   /**
    * This method used to submit terms and conditions acceptance
    */
   public onSubmitTnc() {
+    debugger
     const requestBody = {
       request: {
         version: _.get(this.userProfile, 'tncLatestVersion')
