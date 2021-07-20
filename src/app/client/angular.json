@@ -65,7 +65,11 @@
               "src/assets/styles/styles.scss",
               "node_modules/video.js/dist/video-js.min.css",
               "./node_modules/@project-sunbird/discussions-ui-v8/assets/styles/global.scss",
-              "node_modules/katex/dist/katex.min.css"
+              "node_modules/katex/dist/katex.min.css",
+			"./node_modules/primeicons/primeicons.css",
+			"./node_modules/primeng/resources/themes/nova-light/theme.css",
+			"./node_modules/primeng/resources/primeng.min.css",
+			"./node_modules/angular2-multiselect-dropdown/themes/default.theme.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

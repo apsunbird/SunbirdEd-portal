@@ -27,6 +27,14 @@ import { SharedModule } from '@sunbird/shared';
 import { OrderModule } from 'ngx-order-pipe';
 import { AceEditorModule } from 'ng2-ace-editor';
 
+import { SuiSelectModule, SuiModalModule, SuiAccordionModule, SuiPopupModule, SuiDropdownModule,
+  SuiProgressModule, SuiRatingModule, SuiCollapseModule, SuiDimmerModule } from 'ng2-semantic-ui';
+  import { TableModule } from 'primeng/table';
+  import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { UserSearchService } from '../search/services/user-search/user-search.service';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { UserSignInComponent } from './components/user-sign-in/user-sign-in.component';
+
 
 @NgModule({
   imports: [
@@ -41,11 +49,16 @@ import { AceEditorModule } from 'ng2-ace-editor';
     CommonConsumptionModule,
     TelemetryModule,
     NgxDaterangepickerMd.forRoot(),
-    AceEditorModule
+    AceEditorModule,
+	  TableModule,
+    AngularMultiSelectModule,
+    MultiSelectModule,
+    SuiSelectModule, SuiModalModule, SuiAccordionModule, SuiPopupModule, SuiDropdownModule,
+    SuiProgressModule, SuiRatingModule, SuiCollapseModule, SuiDimmerModule
   ],
   declarations: [CourseConsumptionComponent, OrganisationComponent, CourseProgressComponent, UsageReportsComponent,
     DataTableComponent, DataChartComponent, ListAllReportsComponent, ReportSummaryComponent, ReportComponent, AddSummaryModalComponent,
-    CourseDashboardComponent, ReIssueCertificateComponent, DashboardSidebarComponent, DatasetComponent, MapComponent,FilterComponent],
+    CourseDashboardComponent, ReIssueCertificateComponent, DashboardSidebarComponent, DatasetComponent, MapComponent,FilterComponent, UserSignInComponent],
   exports: [CourseProgressComponent, DataTableComponent],
   providers: [
     RendererService,
@@ -53,6 +66,6 @@ import { AceEditorModule } from 'ng2-ace-editor';
     SearchService,
     LineChartService,
     CourseConsumptionService,
-    OrganisationService, DownloadService, CourseProgressService, UsageService, ReportService]
+    OrganisationService, DownloadService, CourseProgressService, UsageService, ReportService,UserSearchService]
 })
 export class DashboardModule { }

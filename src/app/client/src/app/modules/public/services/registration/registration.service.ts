@@ -12,6 +12,69 @@ export class RegistrationService {
   constructor(public publicDataService: PublicDataService,private http: HttpClient,private learnerService: LearnerService, public configService: ConfigService) { }
 
 
+
+
+
+
+
+
+
+
+
+
+ 
+  addroleRootOrganization(data)
+  {
+    const options = {
+      url: this.configService.urlConFig.URLS.ADMIN.UPDATE_USER_ORG_ROLES,
+      data: data
+    };
+    return this.learnerService.post(options);
+  }
+
+  userSearch(data) {
+    const options = {
+      url: this.configService.urlConFig.URLS.USER.SEARCH_USER,
+      data: data
+    };
+    return this.learnerService.post(options);
+  }
+
+
+  getUserDetailById(data)
+  {
+    const option = {
+      url: this.configService.urlConFig.URLS.USER.READ +'/'+data
+    };
+    return this.learnerService.get(option);
+  }
+
+
+
+
+
+
+  userBlock(data)
+  {      
+   
+    const options = {
+      url: this.configService.urlConFig.URLS.ADMIN.DELETE_USER,
+      data: data
+    };
+    return this.learnerService.post(options);
+  
+}
+userUnBlock(data)
+{  
+ 
+  const options = {
+    url: this.configService.urlConFig.URLS.ADMIN.UNDELETE_USER,
+    data: data
+  };
+  return this.learnerService.post(options);
+
+}
+
   getorgData(data) {
     const options = {
       url: this.configService.urlConFig.URLS.ADMIN.ORG_SEARCH,

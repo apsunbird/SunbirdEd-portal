@@ -1,0 +1,780 @@
+
+<div class="ui bottom  p-0 b-0">
+    <div class="files-block p-20" *ngIf="showUserRecords">
+      <div class="heading twelve">
+          <span class="text-left">Number of User Found:&nbsp;<b>{{countUserRecord}}</b></span>
+          <button  class="text-right sb-btn sb-btn-primary sb-btn-normal" style="margin-right: 25px;" (click)="show()"> Add User </button>
+      </div>
+      <div class="twelve wide column margintop10" style="width:auto">
+      
+        <p-table #dt [value]="showUserData"  (onFilter)="onFilter($event, dt)" [columns]="colsUser" [paginator]="true" [rows]="10">
+  
+          <!--<ng-template pTemplate="caption">
+            <div class="p-d-flex">
+              <input type="text" pInputText size="50" class="sb-form-control" placeholder="Search"
+              (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+              <button type="button" pButton pRipple icon="pi pi-file-o" (click)="dt.exportCSV()" class="p-mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+              <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success p-mr-2"  pTooltip="XLS" tooltipPosition="bottom"></button>
+              <button type="button" pButton pRipple icon="pi pi-filter" (click)="dt.exportCSV({selectionOnly:true})" class="p-button-info p-ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button>
+            </div>
+          </ng-template>-->
+  
+          
+          <ng-template pTemplate="caption">
+            <tr colspan="11">
+              <td>
+                
+            <div  class="ui small left icon input text-left">
+                  <i class="search icon"></i>
+              <input type="text" pInputText size="50" class="sb-form-control" placeholder="Search"
+                (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                
+            </div>
+    
+            <button type="button" pButton pRipple icon="pi pi-filter" style="float:right; margin-left:752px;" (click)="dt.exportCSV({selectionOnly:true})" class="text-right sb-btn sb-btn-primary sb-btn-normal" pTooltip="Selection Only" tooltipPosition="bottom">Export CSV</button>
+         
+          </td>
+        </tr>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns" pResizableColumn [style.width]="col.width"  [pSortableColumn]="col.field" [pSortableColumnDisabled]="col.field">
+                  {{col.header}}                           
+                  <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+              </th>
+              <th style ="width:282px;" colspan="1">Actions</th>
+            </tr>
+
+            <tr>
+                <th  *ngFor="let col of columns" [ngSwitch]="col.field">
+                   <p-multiSelect *ngSwitchCase="'district'" [options]="userDataDistrictWiseAryData" defaultLabel="All"
+                   appendTo="body" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+
+                   <p-multiSelect *ngSwitchCase="'revDiv'" [options]="userDataRevenuetWiseAryData" defaultLabel="All"
+                   appendTo="body" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+
+                   <p-multiSelect *ngSwitchCase="'mandal'" [options]="userDataMandalWiseAryData" defaultLabel="All"
+                   appendTo="body" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+
+                   
+               </th>
+               <th></th>
+ 
+                   </tr>
+          </ng-template>
+        
+          <ng-template pTemplate="body" let-showUserData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns" class="ui-resizable-column">
+                  {{showUserData[col.field]}}
+              </td>
+          <td>                      
+            <button class="sb-btn sb-btn-normal sb-btn-primary" (click)="addRole(showUserData.id,showUserData.rootOrgId)">Edit Roles</button>&nbsp;
+  
+            <!--<button class="sb-btn sb-btn-normal sb-btn-primary"  *ngIf="showUserData.userOrglengths==1"  (click)="addOrg(showUserData.id,showUserData.rootOrgId)">Add Org</button>&nbsp;
+  
+  
+            <button class="sb-btn sb-btn-normal sb-btn-primary"  *ngIf="showUserData.userOrglengths>1"  (click)="removeOrg(showUserData.id,showUserData.rootOrgId)">Add Org</button>&nbsp;-->
+  
+            <button class="sb-btn sb-btn-normal sb-btn-primary" *ngIf="showUserData.uStatus==1" (click)="blockState(showUserData.id,'1')">Block</button>   
+            <button class="sb-btn sb-btn-normal sb-btn-primary" *ngIf="showUserData.uStatus==0" (click)="blockState(showUserData.id,'0')">UnBlock</button>  
+          </td>
+          </tr>
+            </ng-template>
+        
+        </p-table>    
+  </div>
+    
+  </div>
+  
+  
+  
+  <sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='genericPoup'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopupgeneric()"></i>
+  <div class="sb-modal-header">
+  Message
+  </div>
+  <!--/Header-->
+  
+  <!--Content-->
+  <div class="sb-modal-content o-y-visible font-align" [appTelemetryImpression]="telemetryImpression">
+   {{genericMsg}}
+  </div>
+  
+  <!--/Actions-->
+  
+  </sui-modal>
+  
+  
+  <sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='userRegForm'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopup()"></i>
+  <div class="sb-modal-header">
+  Create User
+  </div>
+  <!--/Header-->
+  
+  <!--Content-->
+  <div class="sb-modal-content o-y-visible" [appTelemetryImpression]="telemetryImpression">
+  <form class="sb-form" [formGroup]="userRegistration" id="validateFoem">
+   <!-- <p class="mb-8">Create User</p>-->
+   <!--<div class="d-flex align-items-center">
+  <div class="sb-field d-inline-block">
+    <div class="required field mb-4">
+        <label class="mb-10 font-weight-bold">Mobile Number<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="mobileNumber" aria-label="Enter Name" type="text" name="mobileNumber"
+                  placeholder="Mobile Number">
+      </div>
+  </div>
+  
+  
+  <div class="sb-field d-inline-block">
+    <div class="required field mb-4">
+        <label class="mb-10 font-weight-bold">Email ID<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="mobileNumber" aria-label="Enter Name" type="text" name="mobileNumber"
+                  placeholder="Mobile Number">
+      </div>
+  </div>
+  </div>-->
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">HRMS ID/Employee ID<span class="sb-color-warning">*</span></label>
+       
+                <input class="sb-form-control" formControlName="hrmsID" [readonly]=hrmsIdDataCheck  [(ngModel)]="hrmsData.HRMS_ID"  aria-label="Enter HRMS id" type="text"  name="hrmsID"
+                  placeholder="HRMS ID/Employee ID" autofocus>
+
+                
+  
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.hrmsID.invalid && userRegistration.controls['hrmsID'].errors.required  && !userRegistration.controls['hrmsID'].pristine">
+                    Enter hrms id/employee id
+                  </div>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('hrmsID').hasError('pattern')">
+                     Only alphanumeric is allowed
+                  </div>
+      </div>
+     
+  </div>
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Full Name<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="fName" aria-label="Enter Name" type="text" [attr.disabled]=editName [(ngModel)]="hrmsData.EMP_NAME"    name="fName"
+                  placeholder="First Name" autofocus>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.fName.invalid && userRegistration.controls['fName'].errors.required  && !userRegistration.controls['fName'].pristine">
+                    Enter Full Name
+                  </div>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('fName').hasError('pattern')">
+                     Only alphabet is allowed
+                  </div>
+      </div>
+  </div>
+  
+  
+  
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">DOB<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="dob" aria-label="Enter DOB" type="date" name="dob"
+                  placeholder="DOB" autofocus>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.dob.invalid && userRegistration.controls['dob'].errors.required  && !userRegistration.controls['dob'].pristine">
+                    Enter DOB
+                  </div>
+      </div>
+  </div>
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Gender<span class="sb-color-warning">*</span></label>
+                 <select  class="selection sb-form-control" formControlName="gender" [(ngModel)]="hrmsData.GENDER" [attr.disabled]=genderData>
+                    <option value="null">Select Gender</option>
+                    <option  value="MALE">Male</option>  
+                    <option  value="FEMALE">Female</option>  
+                    <option  value="OTHERS">Others</option> 
+                  </select>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.gender.invalid && userRegistration.controls['gender'].errors.required  && !userRegistration.controls['gender'].pristine">
+                    Select gender
+                  </div>
+      </div>
+  </div>
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Joining Date<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="joinDate" aria-label="Enter Joining Date" type="date" name="joinDate"
+                  placeholder="Joining Date" autofocus>
+  
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.gender.invalid && userRegistration.controls['gender'].errors.required  && !userRegistration.controls['gender'].pristine">
+                    Enter Joining Date
+                     </div>
+      </div>
+  </div>
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">CFMS ID<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="cfmsID" [(ngModel)]="hrmsData.CFMS_ID"  aria-label="Enter CFMS ID" type="text" [attr.disabled]=cfmsID  name="cfmsID"
+                  placeholder="CFMS ID" autofocus>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.cfmsID.invalid && userRegistration.controls['cfmsID'].errors.required  && !userRegistration.controls['cfmsID'].pristine">
+                    Enter cfms id
+                  </div>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('cfmsID').hasError('pattern')">
+                     Only alphanumeric is allowed
+                  </div>
+      </div>
+      </div>
+  
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Secretariat Name<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control"  [attr.disabled]=secName  [(ngModel)]="hrmsData.SECRETARIAT_NAME"  formControlName="secName" aria-label="Enter Secretariat Name" type="text" name="secName"
+                  placeholder="Secretariat Name" autofocus>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secName.invalid && userRegistration.controls['secName'].errors.required  && !userRegistration.controls['secName'].pristine">
+                    Enter secretariat name
+                  </div>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('secName').hasError('pattern')">
+                     Only alphanumeric is allowed
+                  </div>
+      </div>
+  </div>
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Secretariat Code<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="secCode" [attr.disabled]=secName  [(ngModel)]="hrmsData.SECRETARIAT_CODE"  aria-label="Enter Secretariat Code" type="text" name="secCode"
+                  placeholder="Secretariat Code" autofocus>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secCode.invalid && userRegistration.controls['secCode'].errors.required  && !userRegistration.controls['secCode'].pristine">
+                    Enter secretariat code
+                  </div>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('secCode').hasError('pattern')">
+                     Only alphanumeric is allowed
+                  </div>
+      </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">District<span class="sb-color-warning">*</span></label>
+                <!--<input class="sb-form-control" formControlName="district"  [attr.disabled]=districtName  [(ngModel)]="hrmsData.DISTRICT_NAME" aria-label="Enter District" type="text" name="district"
+                  placeholder="District:" autofocus>-->
+  
+  
+                  <select  class="selection sb-form-control" formControlName="district"  (change)="onChange($event.target.value)" >
+                    <option value="null">Select District</option>
+                    <option *ngFor="let dataObj of districtList" [value]="dataObj.districtName">{{dataObj.districtVal}}</option>  
+                  </select>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.district.invalid && userRegistration.controls['district'].errors.required  && !userRegistration.controls['district'].pristine">
+                    Select District
+                  </div>
+      </div>
+  </div>
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Revenue Division<span class="sb-color-warning">*</span></label>
+                <!--<input class="sb-form-control" formControlName="revDiv"  aria-label="Enter Revenue Division" type="text" name="revDiv"
+                  placeholder="Revenue Division" autofocus>-->
+  
+  
+                  <select  class="selection sb-form-control" formControlName="revDiv" (change)="onChange1($event.target.value)" >
+                    <option value="null">Select Revenue Division</option>
+                    <option *ngFor="let dataObj of divList" [value]="dataObj.divName">{{dataObj.divVal}}</option>  
+                  </select>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.revDiv.invalid && userRegistration.controls['revDiv'].errors.required  && !userRegistration.controls['revDiv'].pristine">
+                    Select Revenue Division
+                  </div>
+      </div>
+  </div>
+  
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Mandal/ULB<span class="sb-color-warning">*</span></label>
+               <!--- <input class="sb-form-control" formControlName="mandalULB" [attr.disabled]=mandalName  [(ngModel)]="hrmsData.MANDAL_NAME" aria-label="Enter Mandal/ULB" type="text" name="mandalULB"
+                  placeholder="Mandal/ULB" autofocus>-->
+  
+  
+                  <select  class="selection sb-form-control" formControlName="mandalULB" (onChange)="handleSelectChangeRevDiv(event)" >
+                    <option value="null">Select Mandal/ULB</option>
+                    <option *ngFor="let dataObj of mandalListNew" [value]="dataObj.mandalNamedata">{{dataObj.mnadalValData}}</option>  
+                  </select>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.mandalULB.invalid && userRegistration.controls['mandalULB'].errors.required  && !userRegistration.controls['mandalULB'].pristine">
+                    Select mandal/uLB
+                  </div>
+      </div>
+  </div>
+  
+  
+  
+  
+  
+    <div class="sb-field">
+      <div class="required field mb-4">
+          <label class="mb-10 font-weight-bold">Mobile Number<span class="sb-color-warning">*</span></label>
+                  <input class="sb-form-control" [attr.disabled]=editMobile formControlName="mobileNumber" [(ngModel)]="hrmsData.MOBILE"  aria-label="Enter Name" type="text" name="mobileNumber"
+                    placeholder="Mobile Number" autofocus>
+  
+                    <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.mobileNumber.invalid && userRegistration.controls['mobileNumber'].errors.required && !userRegistration.controls['mobileNumber'].pristine">
+                        Enter mobile no
+                      </div>
+                      <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('mobileNumber').hasError('pattern')">
+                        Enter correct mobile no
+                      </div>
+        </div>
+    </div>
+  
+  
+    <div class="sb-field">
+      <div class="required field mb-4">
+          <label class="mb-10 font-weight-bold">Email ID<span class="sb-color-warning">*</span></label>
+                  <input class="sb-form-control" formControlName="emailId" aria-label="Enter Email Id" type="text" [(ngModel)]="hrmsData.EMP_MAIL_ID"  name="emailId"
+                    placeholder="Email ID" autofocus>
+                    <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.emailId.invalid && userRegistration.controls['emailId'].errors.required && !userRegistration.controls['emailId'].pristine">
+                        Enter email id
+                      </div>
+                      <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('emailId').hasError('pattern')">
+                       Enter correct email id
+                      </div>
+        </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  <!--<div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Last Name</label>
+                <input class="sb-form-control" formControlName="lName" aria-label="Enter Last Name" type="text" name="lName"
+                  placeholder="Last Name" autofocus>
+            
+      </div>
+  </div>-->
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Password<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="password" aria-label="Enter Password" type="password" 
+                  placeholder="Password" autofocus>
+          
+                <div *ngIf="userRegistration.controls.password.touched && userRegistration.controls.password.invalid">
+                  <div *ngIf="userRegistration.controls.password.errors.required" class="mt-0 mb-8 ui pointing red basic label below">Password is required.</div>
+              </div>
+                  
+      </div>
+  </div>
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Confirm Password<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="confirmpassword" aria-label="Enter Confirm Password" type="password" name="confirmpassword"
+                  placeholder="Confirm Password" autofocus>
+            
+  
+              <div *ngIf="userRegistration.controls.confirmpassword.touched && userRegistration.controls.confirmpassword.invalid">
+                <div *ngIf="userRegistration.controls.confirmpassword.errors.required" class="mt-0 mb-8 ui pointing red basic label below">Confirm Password is required.</div>
+                <div *ngIf="userRegistration.controls.confirmpassword.errors.confirmedValidator" class="mt-0 mb-8 ui pointing red basic label below">Password and Confirm Password must be match.</div>
+            </div>
+                  
+                 
+      </div>
+  </div>
+  
+  
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Education<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="education" aria-label="Enter Education" [(ngModel)]="hrmsData.QUALIFICATION" [attr.disabled]=qualificationlist  type="text" name="education"
+                  placeholder="Education" autofocus>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.education.invalid && userRegistration.controls['education'].errors.required  && !userRegistration.controls['education'].pristine">
+                    Enter Education
+                  </div>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('education').hasError('pattern')">
+                     Only alphabet is allowed
+                  </div>
+      </div>
+  </div>
+  
+  <div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Job Profile<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="jobName" aria-label="Enter Job Profile" [(ngModel)]="hrmsData.DESIGNATION"  [attr.disabled]=designation type="text" name="jobName"
+                  placeholder="Job Profile">
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.jobName.invalid && userRegistration.controls['jobName'].errors.required  && !userRegistration.controls['jobName'].pristine">
+                    Enter Job Profile
+                  </div>
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('jobName').hasError('pattern')">
+                     Only alphanumeric is allowed
+                  </div>
+      </div>
+  </div>
+  
+  <!--<div class="sb-field">
+    <div class="required field mb-8">
+        <label class="mb-10 font-weight-bold">Department Name<span class="sb-color-warning">*</span></label>-->
+              
+  
+                 <!--- <sui-select class="selection sb-form-control" formControlName="orgName" [options]="orgNameList"
+                  [placeholder]="'Select Department Name'" labelField="orgName" valueField="orgName" #orgName> 
+                  <sui-select-option *ngFor="let channel of orgName.filteredOptions" [value]="channel">
+                  </sui-select-option>
+                </sui-select>-->
+  
+  
+  
+               <!---- <select  class="selection sb-form-control" formControlName="orgName">
+                  <option value="null">Select Department</option>
+                  <option *ngFor="let dataObj of orgNameList" [value]="dataObj.channel">{{dataObj.orgName}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.gender.invalid && userRegistration.controls['gender'].errors.required  && !userRegistration.controls['gender'].pristine">
+                 Enter department name
+                  </div>
+      </div>
+  </div>-->
+  
+  
+  
+  
+  
+  
+  
+  
+  <input type="hidden" formControlName="designation" [(ngModel)]="hrmsData.DESIGNATION" />
+  <input type="hidden" formControlName="departmentap" [(ngModel)]="hrmsData.DEPARTMENT" />
+  <input type="hidden" formControlName="ageap" [(ngModel)]="hrmsData.AGE" />
+  <!--<input type="hidden" formControlName="qualification" [(ngModel)]="hrmsData.QUALIFICATION" />-->
+  
+  </form>
+  </div>
+  <!--/Content-->
+  
+  <!--Actions-->
+  <div class="sb-modal-actions">
+  <button  class="sb-btn sb-btn-primary sb-btn-normal flex-ai-jc-center" type="button"
+  [disabled]="!userRegistration.valid || disableBtn" [ngClass]="{'sb-btn-disabled': !userRegistration.valid}"
+  (click)="onSubmitForm()">
+  Submit
+  </button>
+  
+  
+  </div>
+  <!--/Actions-->
+  
+  </sui-modal>
+  
+  <sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='subOrgPopup'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopup()"></i>
+  <div class="sb-modal-header">
+  Add  Organization
+  </div>
+  <!--/Header-->
+  <!--Content-->
+  <div class="sb-modal-content o-y-visible" [appTelemetryImpression]="telemetryImpression">
+  <form class="sb-form"  [formGroup]="addOrgForm"  id="validateFoem">
+    <input type="hidden" name="userId" formControlName="gridOrgUserId" [(ngModel)]="gridOrgUserId" class="sb-form-control">
+    <div class="field">
+      <label>Organization</label>
+  
+      <select  formControlName="addOrgname" class="abcd">
+        <option *ngFor="let dataObj of getOrgMentorList" [value]="dataObj.orgName + '/' + dataObj.id+'/'+dataObj.isRootOrg">{{dataObj.orgName}}</option>  
+        
+      </select>
+     
+    </div>
+  
+    <div class="field">
+      <label>Roles</label>
+    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+  [settings]="dropdownSettings" 
+  (onSelect)="onItemSelect($event)" 
+  (onDeSelect)="OnItemDeSelect($event)"
+  (onSelectAll)="onSelectAll($event)"
+  (onDeSelectAll)="onDeSelectAll($event)" formControlName="addOrgrole"></angular2-multiselect>
+  
+  </div>
+  
+  
+  
+  
+  </form>
+  </div>
+  <!--/Content-->
+  
+  <!--Actions-->
+  <div class="sb-modal-actions">
+  <button  class="sb-btn sb-btn-primary sb-btn-normal flex-ai-jc-center" type="button"
+  [disabled]="!addOrgForm.valid || disableBtn" [ngClass]="{'sb-btn-disabled': !addOrgForm.valid}"
+  (click)="addOrgFormSubmit()">
+  Submit
+  </button>
+  
+  
+  </div>
+  <!--/Actions-->
+  
+  </sui-modal>
+  
+  
+  
+  
+  <sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='rolePopup'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopup()"></i>
+  <div class="sb-modal-header">
+  Edit Roles
+  </div>
+  <!--/Header-->
+  <!--Content-->
+  <div class="sb-modal-content o-y-visible" [appTelemetryImpression]="telemetryImpression">
+  <form class="sb-form" [formGroup]="userRoleForm" id="validateFoem">
+    
+    <div class="field">
+      <label>Role</label>
+      <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+      [settings]="dropdownSettings" 
+      (onSelect)="onItemSelect($event)" 
+      (onDeSelect)="OnItemDeSelect($event)"
+      (onSelectAll)="onSelectAll($event)"
+      (onDeSelectAll)="onDeSelectAll($event)" formControlName="role"></angular2-multiselect>
+    </div>
+  
+  
+  
+  
+  </form>
+  </div>
+  <!--/Content-->
+  
+  <!--Actions-->
+  <div class="sb-modal-actions">
+  <button  class="sb-btn sb-btn-primary sb-btn-normal flex-ai-jc-center" type="button"
+  [disabled]="!userRoleForm.valid || disableBtn" [ngClass]="{'sb-btn-disabled': !userRoleForm.valid}"
+  (click)="addRoleFormSubmit()">
+  Submit
+  </button>
+  
+  
+  </div>
+  <!--/Actions-->
+  
+  </sui-modal>
+  
+  
+  
+  
+  <sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='orgDeletePopup'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopup()"></i>
+  <div class="sb-modal-header">
+    Message
+  </div>
+  <!--/Header-->
+  <!--Content-->
+  
+  <div class="sb-modal-content o-y-visible" [appTelemetryImpression]="telemetryImpression">
+    <div class="font-align">
+      <b> Are you sure you want to remove user from the Organization </b></div>
+    <form [formGroup]="genericForm" class="sb-form batchAddUserForm" id="validateFoem">
+    
+      
+      <input type="hidden" name="description" formControlName="genericUserId" [(ngModel)]="removeOrgUserId" class="sb-form-control">
+         
+      <input type="hidden" name="description" formControlName="genericId" [(ngModel)]="removeOrgUserdataAll" class="sb-form-control">
+          
+       
+    </form>
+  </div>
+  <!--/Content-->
+  
+  <!--Actions-->
+  <div class="sb-modal-actions">
+  <button  class="sb-btn sb-btn-primary sb-btn-normal flex-ai-jc-center" type="button"
+  (click)="removeOrgSubmit()">
+  Yes
+  </button>
+  
+  <button  class="sb-btn sb-btn-primary sb-btn-normal flex-ai-jc-center" type="button"
+  (click)="closepopup()">
+  No
+  </button>
+  
+  
+  </div>
+  <!--/Actions-->
+  
+  </sui-modal>
+  
+  
+  
+  
+  
+  <sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='confirmPopup'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopup()"></i>
+  <div class="sb-modal-header">
+    Message
+  </div>
+  <!--/Header-->
+  <!--Content-->
+  
+  <div class="sb-modal-content o-y-visible" [appTelemetryImpression]="telemetryImpression">
+    <div class="font-align">
+      <b> {{confirmPopupMsg}} </b></div>
+    <form [formGroup]="confirmUserForm" class="sb-form batchAddUserForm" id="validateFoem">
+      <input type="hidden" name="blockUserid" formControlName="blockUserid" [(ngModel)]="blockUserid" class="sb-form-control">
+      <input type="hidden" name="blockid" formControlName="blockid" [(ngModel)]="blockId" class="sb-form-control">
+   
+  </form>
+  </div>
+  <!--/Content-->
+  
+  <!--Actions-->
+  <div class="sb-modal-actions">
+    <button class="sb-btn sb-btn-normal sb-btn-primary" (click)="blockConfirmState()" >Yes</button>
+  
+    <button class="sb-btn sb-btn-normal sb-btn-outline-primary mr-8" (click)="closepopup()" >No</button>
+  
+  
+  
+  </div>
+  <!--/Actions-->
+  
+  </sui-modal>
+  
+  
+  
+  
+  <sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='hrmsIDPopup'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopup()"></i>
+  <div class="sb-modal-header">
+  Enter HRMS ID
+  </div>
+  <!--/Header-->
+  <!--Content-->
+  <div class="sb-modal-content o-y-visible" [appTelemetryImpression]="telemetryImpression">
+  <form class="sb-form" [formGroup]="userHrmsIdForm" id="validateFoem">
+    <div class="sb-field">
+      <div class="required field mb-4">
+              <label class="mb-10 font-weight-bold">HRMS Id<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="addHrmsId"  aria-label="Enter HRMS ID" type="text" name="addHrmsId"
+              placeholder="HRMS Id" autofocus>
+              <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userHrmsIdForm.controls.addHrmsId.invalid && userHrmsIdForm.controls['addHrmsId'].errors.required && !userHrmsIdForm.controls['addHrmsId'].pristine">
+              Enter HRMS Id
+              </div>
+                      
+        </div>
+    </div>
+  
+  
+  
+  
+  </form>
+  </div>
+  <!--/Content-->
+  
+  <!--Actions-->
+  <div class="sb-modal-actions">
+  <button  class="sb-btn sb-btn-primary sb-btn-normal flex-ai-jc-center" type="button"
+  [disabled]="!userHrmsIdForm.valid || disableBtn" [ngClass]="{'sb-btn-disabled': !userHrmsIdForm.valid}"
+  (click)="hrmsIdSubmit()">
+  Submit
+  </button>
+  
+  
+  </div>
+  <!--/Actions-->
+  
+  </sui-modal>
+  
+  
+  
+  
+  
+  
+  
+  

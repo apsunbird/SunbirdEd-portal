@@ -1597,6 +1597,18 @@ const API_LIST = {
 	'/learner/user/v1/create': {
       checksNeeded: [],
       ROLE_CHECK: [ROLE.PUBLIC]
+    },
+	'/learner/user/v1/read/:userId': {
+      checksNeeded: ['ROLE_CHECK'],
+      ROLE_CHECK: [ROLE.PUBLIC]
+    },
+		'/learner/user/v1/block': {
+      checksNeeded: ['ROLE_CHECK'],
+      ROLE_CHECK: [ROLE.PUBLIC]
+    },
+	'/learner/user/v1/unblock': {
+      checksNeeded: ['ROLE_CHECK'],
+      ROLE_CHECK: [ROLE.PUBLIC]
     }
   },
   URL_PATTERN: [
@@ -1702,7 +1714,8 @@ const API_LIST = {
     '/action/question/v1/read/:do_id',
     '/action/question/v1/review/:do_id',
     '/action/question/v1/publish/:do_id',
-    '/action/question/v1/update/:do_id'
+    '/action/question/v1/update/:do_id',
+	'/learner/user/v1/read/:userId'
   ]
 };
 module.exports = API_LIST;

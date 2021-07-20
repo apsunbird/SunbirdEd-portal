@@ -14,3 +14,4 @@ export * from './dashboard-sidebar/dashboard-sidebar.component';
 export * from './dataset/dataset.component';
 export * from './map/map.component';
 export * from './filter/filter.component';
+export * from './user-sign-in/user-sign-in.component';

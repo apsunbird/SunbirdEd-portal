@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   OrganisationComponent, CourseConsumptionComponent, CourseProgressComponent, UsageReportsComponent,
   ReportComponent, ListAllReportsComponent, CourseDashboardComponent, ReIssueCertificateComponent,
-  DashboardSidebarComponent
+  DashboardSidebarComponent,UserSignInComponent
 } from './components/';
 import { AuthGuard } from '../core/guard/auth-gard.service';
 const telemetryEnv = 'course-dashboard';
@@ -103,7 +103,11 @@ const routes: Routes = [
       breadcrumbs: [{ label: 'Home', url: '/home' },
       { label: 'Profile', url: '/profile' }, { label: 'Report Page', url: '' }]
     }
+  },
+   {
+    path: 'sign-in', component:UserSignInComponent 
   }
+  
 ];
 
 @NgModule({
