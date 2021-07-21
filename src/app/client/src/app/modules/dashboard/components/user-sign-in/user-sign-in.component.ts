@@ -169,15 +169,15 @@ export class UserSignInComponent implements OnInit {
   editName: boolean=false;
  // hrmsIdData: boolean;
   genderData: boolean=false;
-  cfmsID: boolean;
-  SECRETARIAT_NAME: boolean;
-  secName: boolean;
-  secCode: boolean;
-  mandalName: boolean;
-  revDivNane: boolean;
-  districtName: boolean;
-  qualificationlist: boolean;
-  designation: boolean;
+  cfmsID: boolean=false;
+  SECRETARIAT_NAME: boolean=false;
+  secName: boolean=false;
+  secCode: boolean=false;
+  mandalName: boolean=false;
+  revDivNane: boolean=false;
+  districtName: boolean=false;
+  qualificationlist: boolean=false;
+  designation: boolean=false;
  // districtAry: any;
   divAry: { divName: string; divVal: string; }[];
   divisionval: any;
@@ -205,8 +205,11 @@ export class UserSignInComponent implements OnInit {
   userDataMandalWiseAryData: any[] = new Array();
   orgRolesAry: any;
   showUserRecords: boolean=false;
-  orgAdmin: boolean;
+  orgAdmin: boolean=false;
   hrmsIdDataCheck: boolean=false;
+  emailIdDataCheck: boolean=false;
+  userRolesAry: any= new Array()
+  userIds: string[];
 
    /**
 	 * Constructor to create injected service(s) object
@@ -362,25 +365,28 @@ this.dropdownSettings = {
      this.userRegForm = true;
      this.genericPoup = false;
      this.hrmsIDPopup = false;
-    /* this.hrmsData= {
-      'MOBILE':'9177057488',
-      'EMP_MAIL_ID':'chakshu303@gmail.com',
-      'EMP_NAME':'chakshu',
-      'GENDER':'MALE',
-      'QUALIFICATION':'B-Tech',
-      'DESIGNATION':'Software Eng',
-      'DEPARTMENT':'Health, Medical & Family Welfare',
-      "SECRETARIAT_NAME": "KOTAVURU",
-      "SECRETARIAT_CODE": "11090984",
-      "MANDAL_NAME": "B KOTHAKOTA",
-      "DISTRICT_NAME": "CHITTOOR",
-      "AGE":"10"
-
-
-    }*/
+  
 
     if(res['status']==true)
     {
+
+     /* this.hrmsData= {
+        'MOBILE':'9177057488',
+        'EMP_MAIL_ID':'chakshu303@gmail.com',
+        'EMP_NAME':'chakshu',
+        'GENDER':'MALE',
+        'QUALIFICATION':'B-Tech',
+        'DESIGNATION':'Software Eng',
+        'DEPARTMENT':'Health, Medical & Family Welfare',
+        "SECRETARIAT_NAME": "KOTAVURU",
+        "SECRETARIAT_CODE": "11090984",
+        "MANDAL_NAME": "B KOTHAKOTA",
+        "DISTRICT_NAME": "CHITTOOR",
+        "AGE":"10"
+  
+  
+      }*/
+
     this.hrmsData= {
       'MOBILE':res['result'][0]['MOBILE'],
       'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
@@ -397,6 +403,8 @@ this.dropdownSettings = {
       "CFMS_ID":res['result'][0]['CFMS_ID']
       
     }
+
+
   }
     else
     {
@@ -437,6 +445,14 @@ this.dropdownSettings = {
      console.log(this.editName);
 
     // this.editName
+
+    if(this.hrmsData.EMP_MAIL_ID!=null)
+    {
+      this.emailIdDataCheck = true;
+    }
+    else{
+     this.emailIdDataCheck = false;
+    }
 
 
      if(this.hrmsData.HRMS_ID!=null)
@@ -600,10 +616,53 @@ removeOrg(orgUserId:any)
     sessionStorage.setItem("orgID", orgID);
    // this.dropdownList = [];
    // this.selectedRoles1 = [];
-   this.selectedItems = [
+   this.dropdownList = [
+    {"id":1,"itemName":"PUBLIC"},
+    {"id":2,"itemName":"CONTENT_CREATOR"},
+    {"id":3,"itemName":"CONTENT_REVIEWER"},
+    {"id":4,"itemName":"COURSE_MENTOR"},
+    {"id":5,"itemName":"ORG_ADMIN"},
+    {"id":6,"itemName":"ORG_MODERATOR"},
+    {"id":7,"itemName":"ORG_MANAGEMENT"},
+    {"id":8,"itemName":"SYSTEM_ADMINISTRATION"}
+
+  ];
+  /* this.selectedItems = [
     {"id":1,"itemName":"PUBLIC"}
-  ]  
-    this.rolePopup = true;
+  ]  */
+
+  this.selectedItems = [
+    {"id":1,"itemName":"PUBLIC"}   
+];
+  
+    this._httpService.getUserDetailByID(userID).subscribe(response => { 
+      console.log("User Response ==============================");
+     // console.log(response);
+      this.userDetail = response;
+
+      this.userRolesAry =  this.userDetail.result.response.organisations[0].roles;
+      //console.log(this.userDetail);
+      //console.log(this.userRolesAry);
+      this.rolePopup = true;
+
+      if( this.userRolesAry.length > 0 ) {
+        for( var i = 0; i < this.dropdownList.length; i++ ) {      
+         for( var j = 0; j < this.userRolesAry.length; j++ ) {
+           if(this.userRolesAry[j] !="PUBLIC"){
+           if( this.userRolesAry[j] == this.dropdownList[i].itemName ) {
+                   this.selectedItems.push({"id" :this.dropdownList[i].id,"itemName":this.dropdownList[i].itemName});
+              } 
+            }   
+          }
+        }
+      } 
+    
+   
+
+}, (err) => {
+  console.log(err);
+
+});
   }
 
 
@@ -699,7 +758,7 @@ removeOrg(orgUserId:any)
       this.populateUserSearch();
       //this.confirmPopup=false;
       this.genericPoup = true;
-      this.genericMsg ==err.error.params.errmsg;
+      this.genericMsg =err.error.params.errmsg;
     //  window.location.reload();
 
       })
@@ -837,7 +896,7 @@ subRootOrgRoleList()
       { field: 'mandal', header: 'Mandal/ULB', width: '115px' },
       { field: 'hrmsId', header: 'hrmsId', width: '90px' },
       { field: 'cfmsId', header: 'cfmsId', width: '90px' },
-      { field: 'status', header: 'Status', width: '60px' }
+      { field: 'status', header: 'Status', width: '65px' }
       
     ]
   }
@@ -861,7 +920,7 @@ subRootOrgRoleList()
      this.userDataDistrictWiseAryData = [];
      this.userDataRevenuetWiseAryData = [];
      this.userDataMandalWiseAryData = [];
-     this.countUserRecord = res.result.response.count;
+     //this.countUserRecord = res.result.response.count;
         res.result.response.content.forEach(element => {
           this.userOrgLength =  element.organisations.length;
           if(element.status==1)
@@ -938,10 +997,16 @@ subRootOrgRoleList()
          // "lastName": this.userRegistration.value['hrmsID']+'$#$#'+this.userRegistration.value['cfmsID']+'$#$#'+this.userRegistration.value['secCode']+'$#$#'+this.userRegistration.value['secName']+'$#$#'+this.userRegistration.value['ageap']+'$#$#'+this.userRegistration.value['jobName']+'$#$#'+this.userRegistration.value['education']+'$#$#'+this.userRegistration.value['departmentap']+'$#$#'+this.userRegistration.value['mandalULB']+'$#$#'+this.userRegistration.value['revDiv']+'$#$#'+this.userRegistration.value['district']+'$#$#'+this.userRegistration.value['emailId']+'$#$#'+this.userRegistration.value['mobileNumber']+'$#$#'+this.userRegistration.value['dob']+'$#$#'+this.userRegistration.value['joinDate']+'$#$#'+this.userRegistration.value['gender'],
           this.showUserData.push({"uStatus":element.status,"userOrglengths":this.userOrgLength,"createdDate":element.createdDate,"status":this.status,"id":element.id,"rootOrgId": element.rootOrgId,"firstName": element.firstName,"lastName":element.lastName,"email":element.email,"phone":element.phone,"hrmsId":hrmsId,"cfmsId":cfmsId,"mandal":mandal,"revDiv":revDiv,"district":districtName,"emailId":emailId,"mobile":mobile});
         })
-        this.showUserData =  this.showUserData.sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime())
+
         console.log("users==========");
         //console.log(nameArr);
         console.log(this.showUserData);
+
+       const ids = ['baf6d6a3-194b-4749-a28f-d4d7363a8fcb',"94106546-4c66-49e4-8d96-db676ba5af97"];
+        this.showUserData =   this.showUserData.filter( i => ids.includes( i.id ) == false );
+        this.countUserRecord = this.showUserData.length;
+        this.showUserData =  this.showUserData.sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime())
+      
         this.userDataDistrictWise = this.showUserData
         .map(item => item.district)
         .filter((value, index, self) => self.indexOf(value) === index)
@@ -1215,7 +1280,7 @@ ngDoCheck() {
           invalid.push(name);
       }
   }
- // console.log(invalid)
+  console.log(invalid)
 
   
 }
@@ -1304,7 +1369,7 @@ blockState(userIds:any,blockId:any){
     console.log(err)
     this.rolePopup = false;
     this.genericPoup = true;
-    this.genericMsg ==err.error.params.errmsg;
+    this.genericMsg =err.error.params.errmsg;
     //window.location.reload();
     })
    }

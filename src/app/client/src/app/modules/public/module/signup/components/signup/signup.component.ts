@@ -91,17 +91,17 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
   disabledMobile: boolean;
   editMobile: boolean=false;
   editName: boolean=false;
-  hrmsIdData: boolean;
-  genderData: boolean;
-  cfmsID: boolean;
+  //hrmsIdData: boolean;
+  genderData: boolean=false;
+  cfmsID: boolean=false;
   SECRETARIAT_NAME: boolean;
-  secName: boolean;
-  secCode: boolean;
-  mandalName: boolean;
-  revDivNane: boolean;
-  districtName: boolean;
-  qualificationlist: boolean;
-  designation: boolean;
+  secName: boolean=false;
+  secCode: boolean=false;
+  mandalName: boolean=false;
+  revDivNane: boolean=false;
+  districtName: boolean=false;
+  qualificationlist: boolean=false;
+  designation: boolean=false;
  // districtAry: any;
   divAry: { divName: string; divVal: string; }[];
   divisionval: any;
@@ -116,6 +116,8 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
   districtKey: string;
   joinDateData: { id: any; idType: string; provider: string; operation: string; };
   hrmsResponse: Response;
+  emailIdDataCheck: boolean=false;
+  hrmsIdDataCheck: boolean=false;
   
   
 
@@ -246,6 +248,23 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
      this.userRegForm = true;
      this.genericPoup = false;
      this.hrmsIDPopup = false;
+
+        /* this.hrmsData= {
+        'MOBILE':'9177057488',
+        'EMP_MAIL_ID':'chakshu303@gmail.com',
+        'EMP_NAME':'chakshu',
+        'GENDER':'MALE',
+        'QUALIFICATION':'B-Tech',
+        'DESIGNATION':'Software Eng',
+        'DEPARTMENT':'Health, Medical & Family Welfare',
+        "SECRETARIAT_NAME": "KOTAVURU",
+        "SECRETARIAT_CODE": "11090984",
+        "MANDAL_NAME": "B KOTHAKOTA",
+        "DISTRICT_NAME": "CHITTOOR",
+        "AGE":"10"
+  
+  
+      }*/
      this.hrmsData= {
       'MOBILE':res['result'][0]['MOBILE'],
       'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
@@ -266,55 +285,107 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
      {
        this.editMobile = true;
      }
+     else{
+      this.editMobile = false;
+     }
 
      if(this.hrmsData.EMP_NAME!=null)
      {
        this.editName = true;
      }
+     else{
+      this.editName = false;
+     }
 
      if(this.hrmsData.HRMS_ID!=null)
      {
-       this.hrmsIdData = true;
+      // this.hrmsIdData = true;
      }
+     else{
+      //this.hrmsIdData = false;
+     }
+
+     if(this.hrmsData.HRMS_ID!=null)
+     {
+       this.hrmsIdDataCheck = true;
+     }
+     else{
+      this.hrmsIdDataCheck = false;
+     }
+
+
+     if(this.hrmsData.EMP_MAIL_ID!=null)
+     {
+       this.emailIdDataCheck = true;
+     }
+     else{
+      this.emailIdDataCheck = false;
+     }
+     
 
 
      if(this.hrmsData.GENDER!=null)
      {
        this.genderData = true;
      }
+     else{
+      this.genderData = false;
+     }
 
      if(this.hrmsData.CFMS_ID!=null)
      {
        this.cfmsID = true;
      }
+     else{
+      this.cfmsID = false;
+     }
+     
 
      if(this.hrmsData.SECRETARIAT_NAME!=null)
      {
        this.secName = true;
+     }
+     else{
+      this.secName = false;
      }
 
      if(this.hrmsData.SECRETARIAT_CODE!=null)
      {
        this.secCode = true;
      }
+     else{
+      this.secCode = false;
+     }
 
      if(this.hrmsData.MANDAL_NAME!=null)
      {
        this.mandalName = true;
      }
+     else{
+      this.mandalName = false;
+     }
      if(this.hrmsData.DISTRICT_NAME!=null)
      {
        this.districtName  = true;
+     }
+     else{
+      this.districtName = false;
      }
 
      if(this.hrmsData.QUALIFICATION!=null)
      {
        this.qualificationlist  = true;
      }
+     else{
+      this.qualificationlist = false;
+     }
 
      if(this.hrmsData.DESIGNATION!=null)
      {
        this.designation  = true;
+     }
+     else{
+      this.designation = false;
      }
 
    
@@ -1440,7 +1511,7 @@ onChange1(frmDivVal)
 
         if(this.hrmsData.HRMS_ID!=null)
         {
-          this.hrmsIdData = true;
+          //this.hrmsIdData = true;
         }
 
 
@@ -1727,7 +1798,7 @@ onChange1(frmDivVal)
     this.userRegForm= false;
     this.hrmsIDPopup = false;
     this.genericPoup = true;
-    this.genericMsg ="Error in user ceate!";
+    this.genericMsg =err.error.params.errmsg;
 
     //this.genericMsg ="User Registered Sucessfully!";
    // this.toasterService.error(_.get(this.resourceService, 'messages.fmsg.m0004'));
@@ -1741,7 +1812,7 @@ onChange1(frmDivVal)
             invalid.push(name);
         }
     }
-    //console.log(invalid);
+    console.log(invalid);
   }
 
   closepopup()

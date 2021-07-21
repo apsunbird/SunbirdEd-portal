@@ -17,7 +17,13 @@ export class RegistrationService {
 
 
 
-
+  getUserDetailByID(data)
+  {
+    const option = {
+      url: this.configService.urlConFig.URLS.USER.READ +'/'+data
+    };
+    return this.learnerService.get(option);
+  }
 
 
 

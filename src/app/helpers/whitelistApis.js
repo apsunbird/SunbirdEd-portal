@@ -1592,7 +1592,7 @@ const API_LIST = {
     },
     '/learner/user/v1/role/assign': {
       checksNeeded: ['ROLE_CHECK'],
-      ROLE_CHECK: [ROLE.ORG_ADMIN]
+      ROLE_CHECK: [ROLE.PUBLIC]
     },
 	'/learner/user/v1/create': {
       checksNeeded: [],
