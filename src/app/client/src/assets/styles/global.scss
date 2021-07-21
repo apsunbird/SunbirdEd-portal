@@ -475,7 +475,7 @@ app-workspace {
   height: calculateRem(368px);
   right: calculateRem(-106px);
   opacity: 0.6;
-  z-index: 1;
+  z-index: -1;
   background: url(../images/sbt-right-flower.svg) no-repeat;
 
   html[dir="rtl"] & {

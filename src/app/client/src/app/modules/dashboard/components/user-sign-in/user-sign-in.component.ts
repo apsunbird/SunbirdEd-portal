@@ -894,8 +894,8 @@ subRootOrgRoleList()
       { field: 'district', header: 'District', width: '115px' },
       { field: 'revDiv', header: 'Revenue Division', width: '115px' },
       { field: 'mandal', header: 'Mandal/ULB', width: '115px' },
-      { field: 'hrmsId', header: 'hrmsId', width: '90px' },
-      { field: 'cfmsId', header: 'cfmsId', width: '90px' },
+      { field: 'hrmsId', header: 'HRMS ID', width: '90px' },
+      { field: 'cfmsId', header: 'CFMS ID', width: '90px' },
       { field: 'status', header: 'Status', width: '65px' }
       
     ]

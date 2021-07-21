@@ -148,6 +148,8 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
   isConnected = false;
   isDesktopApp = false;
   showLoadContentModal = false;
+  showUserManagementLink: boolean=false;
+  roleAry: any;
   constructor(public config: ConfigService, public resourceService: ResourceService, public router: Router,
     public permissionService: PermissionService, public userService: UserService, public tenantService: TenantService,
     public orgDetailsService: OrgDetailsService, public formService: FormService,
@@ -157,6 +159,22 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
     public activatedRoute: ActivatedRoute, private cacheService: CacheService, private cdr: ChangeDetectorRef,
     public navigationHelperService: NavigationHelperService, private deviceRegisterService: DeviceRegisterService,
     private connectionService: ConnectionService, public electronService: ElectronService) {
+      console.log("User Profile=============");
+      this.roleAry = [];
+      if(this.userService.userProfile)
+      {
+      this.roleAry = this.userService.userProfile.organisations[0].roles;
+      if(this.roleAry.includes("ORG_ADMIN") || this.roleAry.includes("SYSTEM_ADMINISTRATION"))
+      {
+         this.showUserManagementLink = true;
+
+      }
+      else{
+        this.showUserManagementLink = false;
+      }
+    
+    }
+
     try {
       this.exploreButtonVisibility = (<HTMLInputElement>document.getElementById('exploreButtonVisibility')).value;
       this.reportsListVersion = (<HTMLInputElement>document.getElementById('reportsListVersion')).value as reportsListVersionType;

@@ -472,6 +472,16 @@
               </svg></i>
             {{resourceService.frmelmnts?.lnk?.profile}}
           </li>
+
+
+          <li class="list-item"  *ngIf="showUserManagementLink"  (click)="toggleSideMenu(false)" routerLink="dashBoard/sign-in">
+            <i class="icon-svg icon-svg--sm icon-profileuser mr-8"><svg class="icon icon-svg--primary">
+                <use xlink:href="./assets/images/sprite.svg#profileuser"></use>
+              </svg></i>
+             User Management
+          </li>
+
+
           <li class="list-item" *ngIf='!isDesktopApp && permissionService.permissionAvailable' appPermission
             [permission]='adminDashboard' (click)="toggleSideMenu(false)" [routerLink]="reportsListVersion === 'v2' ? 'dashBoard/reports': 'dashBoard/organization' ">
             <i class="icon-svg icon-svg--sm icon-dashboard mr-8"><svg class="icon icon-svg--primary">
