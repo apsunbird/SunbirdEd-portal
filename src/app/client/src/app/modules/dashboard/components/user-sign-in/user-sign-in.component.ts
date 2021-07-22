@@ -370,7 +370,7 @@ this.dropdownSettings = {
     if(res['status']==true)
     {
 
-     /* this.hrmsData= {
+    /* this.hrmsData= {
         'MOBILE':'9177057488',
         'EMP_MAIL_ID':'chakshu303@gmail.com',
         'EMP_NAME':'chakshu',
@@ -387,7 +387,7 @@ this.dropdownSettings = {
   
       }*/
 
-    this.hrmsData= {
+   this.hrmsData= {
       'MOBILE':res['result'][0]['MOBILE'],
       'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
       'EMP_NAME':res['result'][0]['EMP_NAME'],
@@ -939,7 +939,8 @@ subRootOrgRoleList()
           console.log(nameArr);
           if(nameArr[0]!=null)
           {
-            var hrmsId = nameArr[0];
+            //var hrmsId = nameArr[0];
+            var hrmsId =   nameArr[0].replace('$$$$$', '');
           }
           else
           {
@@ -1220,7 +1221,7 @@ tempArray1 =
   "email": this.userRegistration.value['emailId'], //required
   "firstName": this.userRegistration.value['fName'], //required
  // "lastName": this.userRegistration.value['lName'],
- "lastName": this.userRegistration.value['hrmsID']+'$#$#'+this.userRegistration.value['cfmsID']+'$#$#'+this.userRegistration.value['secCode']+'$#$#'+this.userRegistration.value['secName']+'$#$#'+this.userRegistration.value['ageap']+'$#$#'+this.userRegistration.value['jobName']+'$#$#'+this.userRegistration.value['education']+'$#$#'+this.userRegistration.value['departmentap']+'$#$#'+this.userRegistration.value['mandalULB']+'$#$#'+this.userRegistration.value['revDiv']+'$#$#'+this.userRegistration.value['district']+'$#$#'+this.userRegistration.value['emailId']+'$#$#'+this.userRegistration.value['mobileNumber']+'$#$#'+this.userRegistration.value['dob']+'$#$#'+this.userRegistration.value['joinDate']+'$#$#'+this.userRegistration.value['gender'],
+ "lastName": '$$$$$'+this.userRegistration.value['hrmsID']+'$#$#'+this.userRegistration.value['cfmsID']+'$#$#'+this.userRegistration.value['secCode']+'$#$#'+this.userRegistration.value['secName']+'$#$#'+this.userRegistration.value['ageap']+'$#$#'+this.userRegistration.value['jobName']+'$#$#'+this.userRegistration.value['education']+'$#$#'+this.userRegistration.value['departmentap']+'$#$#'+this.userRegistration.value['mandalULB']+'$#$#'+this.userRegistration.value['revDiv']+'$#$#'+this.userRegistration.value['district']+'$#$#'+this.userRegistration.value['emailId']+'$#$#'+this.userRegistration.value['mobileNumber']+'$#$#'+this.userRegistration.value['dob']+'$#$#'+this.userRegistration.value['joinDate']+'$#$#'+this.userRegistration.value['gender'],
   "password": this.userRegistration.value['password'], //required
   "gender": this.userRegistration.value['gender'],
  "phone": this.userRegistration.value['mobileNumber'],   //required

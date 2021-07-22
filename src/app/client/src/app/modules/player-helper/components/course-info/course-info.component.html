@@ -13,7 +13,7 @@
       <div class="pb-24" *ngIf="courseHierarchy?.creator">
         <div class="content-metadeta__title  fsmall font-weight-bold mb-8 sb-color-gray-800">
           {{resourceService?.frmelmnts?.lbl?.courseCreatedBy}}</div>
-        <div class="content-metadeta__text  fnormal sb-color-gray-400">{{courseHierarchy?.creator}}</div>
+        <div class="content-metadeta__text  fnormal sb-color-gray-400">{{fullName}}</div>
       </div>
       <div class="pb-24">
         <div class="content-metadeta__title  fsmall font-weight-bold mb-8 sb-color-gray-800">{{resourceService.frmelmnts.lbl?.publishedOnInstanceName | interpolate:'{instance}': instance}}</div>

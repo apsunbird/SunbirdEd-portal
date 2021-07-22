@@ -279,7 +279,6 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
       "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
       "HRMS_ID":res['result'][0]['HRMS_ID'],
       "CFMS_ID":res['result'][0]['CFMS_ID']
-      
     }
      if(this.hrmsData.MOBILE!=null)
      {
@@ -1763,14 +1762,13 @@ onChange1(frmDivVal)
   ]
   //let latest_date =this.datepipe.transform(this.userRegistration.value['dob'], 'yyyy-MM-dd');
   let tempArray1 : any;
-
   tempArray1 = 
 {
   "request":{
     "email": this.userRegistration.value['emailId'], //required
     "firstName": this.userRegistration.value['fName'], //required
    // "lastName": this.userRegistration.value['lName'],
-   "lastName": this.userRegistration.value['hrmsID']+'$#$#'+this.userRegistration.value['cfmsID']+'$#$#'+this.userRegistration.value['secCode']+'$#$#'+this.userRegistration.value['secName']+'$#$#'+this.userRegistration.value['ageap']+'$#$#'+this.userRegistration.value['jobName']+'$#$#'+this.userRegistration.value['education']+'$#$#'+this.userRegistration.value['departmentap']+'$#$#'+this.userRegistration.value['mandalULB']+'$#$#'+this.userRegistration.value['revDiv']+'$#$#'+this.userRegistration.value['district']+'$#$#'+this.userRegistration.value['emailId']+'$#$#'+this.userRegistration.value['mobileNumber']+'$#$#'+this.userRegistration.value['dob']+'$#$#'+this.userRegistration.value['joinDate']+'$#$#'+this.userRegistration.value['gender'],
+   "lastName": '$$$$$'+this.userRegistration.value['hrmsID']+'$#$#'+this.userRegistration.value['cfmsID']+'$#$#'+this.userRegistration.value['secCode']+'$#$#'+this.userRegistration.value['secName']+'$#$#'+this.userRegistration.value['ageap']+'$#$#'+this.userRegistration.value['jobName']+'$#$#'+this.userRegistration.value['education']+'$#$#'+this.userRegistration.value['departmentap']+'$#$#'+this.userRegistration.value['mandalULB']+'$#$#'+this.userRegistration.value['revDiv']+'$#$#'+this.userRegistration.value['district']+'$#$#'+this.userRegistration.value['emailId']+'$#$#'+this.userRegistration.value['mobileNumber']+'$#$#'+this.userRegistration.value['dob']+'$#$#'+this.userRegistration.value['joinDate']+'$#$#'+this.userRegistration.value['gender'],
     "password": this.userRegistration.value['password'], //required
     "gender": this.userRegistration.value['gender'],
    "phone": this.userRegistration.value['mobileNumber'],   //required

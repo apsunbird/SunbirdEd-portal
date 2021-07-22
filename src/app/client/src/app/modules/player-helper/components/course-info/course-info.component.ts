@@ -13,11 +13,21 @@ export class CourseInfoComponent implements OnInit {
   showContentCreditsModal = false;
   showCredits = false;
   instance: string;
+  splittedAry: any;
+  fullName: any;
 
   constructor(public resourceService: ResourceService) { }
 
   ngOnInit() {
     this.instance = _.upperCase(this.resourceService.instance || 'SUNBIRD');
+    console.log("Creator info========================");
+    console.log(this.courseHierarchy.creator);
+    if(this.courseHierarchy.creator!=null)
+    {
+      this.splittedAry =  this.courseHierarchy.creator.split("$$$$$");
+      this.fullName = this.splittedAry[0]; 
+     
+    }
   }
 
   ngOnChanges() {

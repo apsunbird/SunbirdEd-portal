@@ -159,17 +159,22 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
     public activatedRoute: ActivatedRoute, private cacheService: CacheService, private cdr: ChangeDetectorRef,
     public navigationHelperService: NavigationHelperService, private deviceRegisterService: DeviceRegisterService,
     private connectionService: ConnectionService, public electronService: ElectronService) {
-      console.log("User Profile=============");
+      //console.log("User Profile=============");
       this.roleAry = [];
+      //console.log("roles=====");
       if(this.userService.userProfile)
       {
       this.roleAry = this.userService.userProfile.organisations[0].roles;
+      console.log("roles");
+      console.log(this.userService.userProfile.organisations[0].roles);
       if(this.roleAry.includes("ORG_ADMIN") || this.roleAry.includes("SYSTEM_ADMINISTRATION"))
       {
+      //  console.log("firstt===");
          this.showUserManagementLink = true;
 
       }
       else{
+        //console.log("second===");
         this.showUserManagementLink = false;
       }
     

@@ -125,6 +125,8 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
 	 * inviewLogs
 	*/
   inviewLogs = [];
+  splittedAry: any;
+  fullName: any;
   /**
     * Constructor to create injected service(s) object
     Default method of Draft Component class
@@ -215,6 +217,12 @@ export class UpForReviewComponent extends WorkSpace implements OnInit, AfterView
       (data: ServerResponse) => {
         if (data.result.count && data.result.content.length > 0) {
           this.upForReviewContentData = data.result.content;
+          if(this.upForReviewContentData[0]['creator']!=null)
+          {
+            this.splittedAry =  this.upForReviewContentData[0]['creator'].split("$$$$$");
+            this.fullName = this.splittedAry[0]; 
+           
+          }
           this.totalCount = data.result.count;
           this.pager = this.paginationService.getPager(data.result.count, pageNumber, limit);
           this.showLoader = false;

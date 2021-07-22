@@ -223,7 +223,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
         if(this.nameArr[0]!=null && this.nameArr[0]!="undefined")
         {
-          this.hrmsId = this.nameArr[0];
+          this.hrmsId =   this.nameArr[0].replace('$$$$$', '');
         }
         else
         {
