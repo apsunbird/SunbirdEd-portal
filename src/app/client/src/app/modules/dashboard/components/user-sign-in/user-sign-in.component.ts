@@ -387,6 +387,7 @@ this.dropdownSettings = {
   
       }*/
 
+      
    this.hrmsData= {
       'MOBILE':res['result'][0]['MOBILE'],
       'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
@@ -400,8 +401,7 @@ this.dropdownSettings = {
       "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
       "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
       "HRMS_ID":res['result'][0]['HRMS_ID'],
-      "CFMS_ID":res['result'][0]['CFMS_ID']
-      
+      "CFMS_ID":res['result'][0]['CFMS_ID'] 
     }
 
 
@@ -661,6 +661,8 @@ removeOrg(orgUserId:any)
 
 }, (err) => {
   console.log(err);
+  this.genericPoup = true;
+  this.genericMsg ="Unblock the user to assign role";
 
 });
   }
@@ -717,7 +719,7 @@ removeOrg(orgUserId:any)
       this.populateUserSearch();
       this.confirmPopup=false;
       this.genericPoup = true;
-      this.genericMsg ==err.error.params.errmsg;
+      this.genericMsg =err.error.params.errmsg;
       //window.location.reload();
       //this.sucesErrorPopup=true 
       //this.popupMsg="User registration is incomplete and is already inactive..";
