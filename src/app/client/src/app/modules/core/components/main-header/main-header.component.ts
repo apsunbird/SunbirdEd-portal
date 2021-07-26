@@ -165,8 +165,8 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
       if(this.userService.userProfile)
       {
       this.roleAry = this.userService.userProfile.organisations[0].roles;
-      console.log("roles");
-      console.log(this.userService.userProfile.organisations[0].roles);
+     // console.log("roles");
+      //console.log(this.userService.userProfile.organisations[0].roles);
       if(this.roleAry.includes("ORG_ADMIN") || this.roleAry.includes("SYSTEM_ADMINISTRATION"))
       {
       //  console.log("firstt===");

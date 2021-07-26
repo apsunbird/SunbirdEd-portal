@@ -383,11 +383,9 @@ this.dropdownSettings = {
         "MANDAL_NAME": "B KOTHAKOTA",
         "DISTRICT_NAME": "CHITTOOR",
         "AGE":"10"
-  
-  
       }*/
 
-      
+
    this.hrmsData= {
       'MOBILE':res['result'][0]['MOBILE'],
       'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
@@ -1005,7 +1003,69 @@ subRootOrgRoleList()
         //console.log(nameArr);
         console.log(this.showUserData);
 
-       const ids = ['baf6d6a3-194b-4749-a28f-d4d7363a8fcb',"94106546-4c66-49e4-8d96-db676ba5af97"];
+      // const ids = ['baf6d6a3-194b-4749-a28f-d4d7363a8fcb',"94106546-4c66-49e4-8d96-db676ba5af97"];
+
+
+       const ids =   ['ee1f9122-87f0-4a39-a332-d84373aec0f1',
+ 'b6f31884-44ca-4496-b218-a608e6ada41b',
+ '911dcf1e-6d49-43c9-927a-f6fad37c16a4',
+ 'eb2dcc6b-8bb2-4d12-bf32-9c51ea37a60d',
+ 'd7fce98a-abee-4141-a3c6-799f760d9ec9',
+ '6023c48c-2b9e-4fec-a448-41bdd638e360',
+ '80ae9ae0-eb2d-49ef-a798-9dd3214efb30',
+ '7353e2e7-a50c-4630-b713-66ad27f9de22',
+ '19f3cb69-b121-4eb1-9f34-fb4b980602fd',
+ '78a2b322-c873-4138-93f5-57049ea67bdc',
+ 'c10b8cd5-26c6-4da1-8382-9ff119ef924c',
+ '1e6758cc-bead-483f-9448-ab7efc2b9432',
+ 'fc559c0e-a212-48b3-b48c-55a97016d44c',
+ 'c98bb78c-abca-4fcd-a8cd-abacb560254e',
+ '7a4b2ba6-ea72-40f4-9581-3aec67c1449f',
+ 'df40e9d1-cd58-4399-b03a-5645efaddb4c',
+ '5957261a-6bc7-47c8-8b29-07db3998c3ba',
+ '6ee84f91-c91f-43fc-bcd6-d0190940aff6',
+ 'bede2234-ff85-4ea7-81c0-2dcd7d7dc82b',
+ 'baf6d6a3-194b-4749-a28f-d4d7363a8fcb',
+ 'abdde8b3-d022-4d02-9d88-6add870ce43c',
+ '4de4b1dd-332b-4c9f-b640-5d7ba88a8727',
+ 'b1c5290a-50c3-4491-ae2c-26c984b91a65',
+ 'fdacc122-1e6a-4ef8-adde-8856d83baf03',
+ 'abff6754-8889-4a07-ad13-d8fa4031dd19',
+ 'e2e8c2aa-6d7b-4f71-99ab-9e579d244f90',
+ '03b62fab-a7da-49e9-8a0a-3a674c951af4',
+ '4d415442-733b-4deb-96e6-1caeeb75df17',
+ '608be7bf-33f3-49d6-9825-f924e140580a',
+ '5a6cd7f6-07fd-4903-8e76-2e8da9386b99',
+ '94106546-4c66-49e4-8d96-db676ba5af97',
+ '6a1b3dc4-3538-4f66-a8be-f1a138a44c3c',
+ 'ebb13381-4a79-4250-93c6-ef057362ef38',
+ '40253a15-bc3c-49fc-aebb-87d2b6c111be',
+ 'a51a9e2e-a553-4c56-a2b0-97930fda0603',
+ '1bd42ecb-27b3-4e53-8365-acdb464a372a',
+ 'bd8d0936-e0a1-43f5-9157-b31aa3c04184',
+ '06cc477a-6bae-499a-b679-f1b5870b38b5',
+ 'c18e122a-802f-4a50-8307-2bfcccff5f4d',
+ '8900fa22-94f6-4220-93a6-c8a70badf09d',
+ 'd6cad8c8-4a4a-4d47-a5d8-4cf881b8a258',
+ 'bba04abd-3175-4cb1-93a0-2df5269cd23f',
+ '969f9558-50bc-48c7-940a-7eff73b37278',
+ 'a37e585b-c225-414c-b158-37c1461f1865',
+ '7ba6e803-5455-461f-be36-af84156b606c',
+ 'b1b68010-86f2-4705-97af-ff10800dbb9d',
+ 'a4050354-08f8-4f65-ae70-6565b0f1aab0',
+ '7be0fd50-10ba-4403-b000-c63daacc5142',
+ '3b70d2ac-6878-47cf-a102-3fc875e3c4d6',
+ 'c476e901-da01-4256-9280-a9cd2b2bf24b',
+ 'c9abb6d2-88e3-41df-9df5-a28c3109b4d6',
+ '9daa7f15-110c-4435-9232-8a9bd687af2b',
+ 'd21288a5-f1f7-4c11-b61b-427cd6d489a1',
+ 'e65d1073-8162-4abd-af74-3ffbbaf01295',
+ '9b68ae66-2fb1-423f-b4a3-16682ebd6ef7',
+ '21d984fa-75ed-44ca-832c-4b33be78c752',
+ '6ce72770-f99e-40d1-aaad-b91d3c8f1b4c',
+ '1ba615f5-1414-4ea7-b122-b3141249ca6e',
+ '25cc5d8e-64a0-4d4a-83bf-77e333ac2e4e',
+ 'c9dc20b7-0046-44fa-aa7f-053a05a9e976','9acc93c8-07f1-4be7-b651-7e666530498b'];
         this.showUserData =   this.showUserData.filter( i => ids.includes( i.id ) == false );
         this.countUserRecord = this.showUserData.length;
         this.showUserData =  this.showUserData.sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime())
