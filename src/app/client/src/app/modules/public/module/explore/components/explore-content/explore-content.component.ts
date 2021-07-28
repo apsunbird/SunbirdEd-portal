@@ -214,7 +214,7 @@ export class ExploreContentComponent implements OnInit, OnDestroy, AfterViewInit
       delete softConstraints['board'];
     }
     const option: any = {
-      filters: _.omitBy(filters || {}, value => _.isArray(value) ? (!_.get(value, 'length') ? true : false) : false),
+      filters: {"primaryCategory":["Course"],"mimeType":["application/vnd.ekstep.ecml-archive","application/vnd.ekstep.html-archive","application/vnd.android.package-archive","application/vnd.ekstep.content-archive","application/vnd.ekstep.content-collection","application/vnd.ekstep.plugin-archive","application/vnd.ekstep.h5p-archive","application/epub","text/x-url","video/x-youtube","application/octet-stream","application/msword","application/pdf","image/jpeg","image/jpg","image/png","image/tiff","image/bmp","image/gif","image/svg+xml","video/avi","video/mpeg","video/quicktime","video/3gpp","video/mpeg","video/mp4","video/ogg","video/webm","audio/mp3","audio/mp4","audio/mpeg","audio/ogg","audio/webm","audio/x-wav","audio/wav"]},
       fields: _.get(this.allTabData, 'search.fields'),
       limit: _.get(this.allTabData, 'search.limit'),
       pageNumber: this.paginationDetails.currentPage,

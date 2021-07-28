@@ -1,4 +1,4 @@
-<ng-container *ngIf="facets && layoutConfiguration">
+<!-- <ng-container *ngIf="facets && layoutConfiguration">
   <div class="sbt-filter">
     <div class="sbt-filter-overlay"></div>
     <div class="sbt-filter-switcher-container cursor-pointer mobile only" (click)="isOpen = !isOpen">
@@ -97,7 +97,7 @@
             </div>
             <div class="sb-prominent-filter-container sb-global-search" *ngIf="refresh">
               <div class="sb-prominent-filter-field" *ngFor="let facet of facets | sortBy:'index':'asc'">
-                <!-- <label class="fnormal font-weight-bold d-flex">{{facet.label}} </label> -->
+                 <label class="fnormal font-weight-bold d-flex">{{facet.label}} </label> 
                 <label *ngIf="facet.name !== 'mediaType'">
                 <sui-multi-select *ngIf="facet.name !== 'mediaType'" [hasLabels]="false" defaultSelectionText={{facet.label}}
                   zeroSelectionText={{resourceService.frmelmnts.lbl.Select}} labelField="name" valueField="name"
@@ -114,12 +114,7 @@
                     </sui-select-option>
                   </ng-template>
                 </sui-multi-select></label>
-                <!-- <div *ngIf="facet.name === 'mediaType'" class="sb-class-bar sb-bg-color-gray-0">
-                  <sb-library-filters [list]="facet.mimeTypeList" [layout]="filterLayout.ROUND"
-                    [selectedItems]="[facet.mimeTypeList.indexOf(selectedMediaType) !== -1 ? facet.mimeTypeList.indexOf(selectedMediaType): selectedMediaTypeIndex]"
-                    (selectedFilter)="filterChangeEvent.next({ event: $event, type: 'mediaType'}); selectedFilters[facet.name]=[$event.data.text]">
-                  </sb-library-filters>
-                </div> -->
+              
               </div>
               <div class="d-flex w-100" *ngFor="let facet of facets | sortBy:'index':'asc'">
                 <div *ngIf="facet.name === 'mediaType'" class="sb-class-bar sb-bg-color-gray-0">
@@ -142,4 +137,4 @@
       </sui-accordion>
     </div>
   </div>
-</ng-container>
+</ng-container> -->

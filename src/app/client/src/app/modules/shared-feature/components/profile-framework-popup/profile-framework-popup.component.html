@@ -9,13 +9,13 @@
   *ngIf="formFieldOptions.length">
 
   <!--Header-->
-  <div class="sb-modal-header">
+  <!-- <div class="sb-modal-header">
     {{resourceService?.frmelmnts?.lbl?.profilePopup}}&lrm;
-  </div>
+  </div> -->
   <!--/Header-->
 
   <!--Content-->
-  <div class="sb-modal-content o-y-visible">
+  <!-- <div class="sb-modal-content o-y-visible">
     <form class="ui form">
       <div *ngFor="let field of formFieldOptions">
         <div class="required sb-field-form-group" *ngIf="field.code === 'board' && allowedFields.includes(field.code)">
@@ -45,11 +45,11 @@
         </div>
       </div>
     </form>
-  </div>
+  </div> -->
   <!--/Content-->
 
   <!--Actions-->
-  <div class="sb-modal-actions">
+  <!-- <div class="sb-modal-actions">
     <button 
       appTelemetryInteract [telemetryInteractObject]="telemetryInteractObject"
       [telemetryInteractEdata]="submitInteractEdata"
@@ -59,7 +59,7 @@
     >
       {{buttonLabel}}
     </button>
-  </div>
+  </div> -->
   <!--/Actions-->
   
 </sui-modal>

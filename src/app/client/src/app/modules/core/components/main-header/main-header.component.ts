@@ -202,7 +202,7 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateHrefPath(url) {
+   updateHrefPath(url) {
     if (url.indexOf('explore-course') >= 0) {
       this.hrefPath = url.replace('explore-course', 'learn');
     } else if (url.indexOf('explore-groups') >= 0) {
@@ -216,7 +216,8 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
     } else if (url.indexOf('play') >= 0) {
       this.hrefPath = '/resources' + url;
     } else {
-      this.hrefPath = '/resources';
+     //// this.hrefPath = '/resources';
+      this.hrefPath = '/search/Library/1';
     }
   }
   getTelemetryContext() {

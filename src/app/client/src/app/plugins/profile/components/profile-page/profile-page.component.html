@@ -278,8 +278,8 @@
     </div>
   </section>-->
 
-  <section class="d-flex flex-ai-center flex-dc pt-30 pb-30 profile-bg-c-4">
-    <!-- User info computer view starts-->
+  <!-- <section class="d-flex flex-ai-center flex-dc pt-30 pb-30 profile-bg-c-4">
+     User info computer view starts
     <div class="ui container">
       <div class="d-flex flex-jc-center flex-ai-center flex-dc" *ngIf="userProfile && userProfile.framework ">
         <div class="max-w-400 computer only">
@@ -310,9 +310,9 @@
           (click)="showEdit = !showEdit">{{resourceService.frmelmnts.lbl.edit}}</button>
       </div>
     </div>
-    <!-- User info computer view ends-->
+     User info computer view ends
 
-    <!-- User info mobile view starts-->
+     User info mobile view starts
     <div class="max-w-300 mobile only">
       <div class="mb-15 d-flex flex-ai-center flex-dc">
         <span class="fmedium white-space-nowrap">{{resourceService.frmelmnts.lbl.boards}}:</span>
@@ -340,8 +340,8 @@
         <button appOnlineOnly class="sb-btn sb-btn-primary sb-btn-xs mt-30">{{resourceService.frmelmnts.lbl.edit}}</button>
       </div>
     </div>
-    <!-- User info mobile view ends-->
-  </section>
+     User info mobile view ends
+  </section> -->
 
   <!-- 4 section start teacher profile-->
   <!--<section class="pt-30 pb-30 d-flex flex-jc-center profile-bg-c-3" *ngIf="declarationDetails && !userProfile.stateValidated">
@@ -491,10 +491,10 @@
   </div>-->
 </div>
 </div>
-<app-popup *ngIf="showEdit" #profileModal [formInput]="userFrameWork" [showCloseIcon]="true" [isClosable]="true"
+<!--<app-popup *ngIf="showEdit" #profileModal [formInput]="userFrameWork" [showCloseIcon]="true" [isClosable]="true"
   [buttonLabel]="resourceService.frmelmnts.btn.submit" (submit)="updateProfile($event)" (close)="showEdit = !showEdit">
 </app-popup>
-<!--<app-update-contact-details *ngIf="showContactPopup" (close)="showContactPopup = !showContactPopup"
+<app-update-contact-details *ngIf="showContactPopup" (close)="showContactPopup = !showContactPopup"
   [contactType]="contactType"></app-update-contact-details>
   <app-location-selection
     (close)="showEditUserDetailsPopup = !showEditUserDetailsPopup"

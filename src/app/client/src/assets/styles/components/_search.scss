@@ -59,7 +59,7 @@ $sb-search-close-btn-color: var(--white);
   }
 
   .sb-search-input {
-    width: 100%;
+   // width: 100%;
     font-size: $sb-search-input-font-size;
     min-height: calculateRem(32px);
     border: 0;
@@ -72,16 +72,18 @@ $sb-search-close-btn-color: var(--white);
     background: var(--sb-search-input-bg);
     color: var(--sb-search-input-text) !important;
   }
-  .sb-btn {
-    background: var(--sb-search-btn-bg);
+ .sb-btn {
+    background: #edf4f9;
     border: 0;
     min-width: auto;
     white-space: nowrap;
-    border-radius: 0 calculateRem(3px) calculateRem(3px) 0 !important;
-    color: var(--sb-search-btn-text);
+    border-radius: 0 0.1875rem 0.1875rem 0 !important;
     font-size: $sb-search-btn-font-size;
-    font-weight: bold;
+  
     margin: 0 !important;
+    height: 34px;
+    color: hsl(210deg 93% 39%)!important;
+   
   }
 
   .icon {

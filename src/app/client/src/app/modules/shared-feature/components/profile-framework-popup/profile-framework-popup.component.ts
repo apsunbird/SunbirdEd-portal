@@ -58,6 +58,7 @@ export class ProfileFrameworkPopupComponent implements OnInit, OnDestroy {
         }
       }), first()).subscribe(data => {
         this.formFieldOptions = data;
+		  this.onSubmitForm();
       }, err => {
         this.toasterService.warning(this.resourceService.messages.emsg.m0012);
         this.navigateToLibrary();
@@ -214,17 +215,17 @@ export class ProfileFrameworkPopupComponent implements OnInit, OnDestroy {
     return this.formService.getFormConfig(formServiceInputParams, this.userService.hashTagId);
   }
   onSubmitForm() {
-    const selectedOption = _.cloneDeep(this.selectedOption);
-    selectedOption.board = _.get(this.selectedOption, 'board') ? [this.selectedOption.board] : [];
-    selectedOption.id = this.frameWorkId;
-    if (selectedOption.board) {
-      _.forEach(selectedOption.board, (data, index) => {
-        if (data === 'CBSE/NCERT') {
-          selectedOption.board[index] = 'CBSE';
-        }
-      });
-    }
-    this.submit.emit(selectedOption);
+   // const selectedOption = _.cloneDeep(this.selectedOption);
+    this.selectedOption=[];
+    this.selectedOption = {"board":["GSWS"],"gradeLevel":["Communication & Soft Skills"],"subject":["Accounts Code"],"medium":["Account Code"],"id":"GSWS"}
+    // if (selectedOption.board) {
+    //   _.forEach(selectedOption.board, (data, index) => {
+    //     if (data === 'CBSE/NCERT') {
+    //       selectedOption.board[index] = 'CBSE';
+    //     }
+    //   });
+    // }
+    this.submit.emit(this.selectedOption);
   }
   private enableSubmitButton() {
     const optionalFields = _.map(_.filter(this._formFieldProperties, formField => !_.get(formField, 'required')), 'code');
