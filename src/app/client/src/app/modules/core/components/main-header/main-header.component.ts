@@ -277,9 +277,15 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
   }
   navigateToHome() {
     if (this.userService.loggedIn) {
-      this.router.navigate(['resources']);
+	this.router.navigate(['/'])
+  .then(() => {
+    window.location.reload();
+   });	
     } else {
-      window.location.href = this.userService.slug ? this.userService.slug + '/explore'  : '/explore';
+	this.router.navigate(['/'])
+  .then(() => {
+    window.location.reload();
+   });
     }
   }
   onEnter(key) {

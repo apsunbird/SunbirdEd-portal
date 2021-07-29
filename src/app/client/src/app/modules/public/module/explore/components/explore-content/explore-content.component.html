@@ -1,6 +1,6 @@
 <app-landing-section *ngIf="allTabData" [textToDisplay]="resourceService?.frmelmnts?.tab?.all" [layoutConfiguration]="layoutConfiguration" [svgToDisplay]="allTabData?.theme?.imageName"></app-landing-section>
 <div [ngClass]="layoutConfiguration ? 'sbt-fluid-content-bg':''">
-  <div [ngClass]="layoutConfiguration ? 'sbt-container sbt-page-content' : 'sb-g'">
+ <div [ngClass]="layoutConfiguration ? 'sb-g sbt-container sbt-page-content' : 'sb-g'">
     <div [ngClass]="FIRST_PANEL_LAYOUT">
       <div *ngIf="layoutConfiguration">
         <ng-container *ngIf="isDesktopApp">
