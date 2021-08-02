@@ -275,14 +275,11 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
       this.languages = [{ 'value': 'en', 'label': 'English', 'dir': 'ltr','accessibleText':'English' }];
     });
   }
-  navigateToHome() {
+   navigateToHome() {
     if (this.userService.loggedIn) {
-	this.router.navigate(['/'])
-  .then(() => {
-    window.location.reload();
-   });	
+      window.location.href ='/search/Library/1';
     } else {
-	this.router.navigate(['/'])
+   this.router.navigate(['/'])
   .then(() => {
     window.location.reload();
    });
