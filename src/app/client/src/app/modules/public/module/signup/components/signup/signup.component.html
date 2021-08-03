@@ -80,32 +80,6 @@ Message
 
 
 
-<sui-modal
-[mustScroll]="true"
-[isClosable]="false"
-[transitionDuration]="0"
-[size]="'normal'"
-class="sb-modal"
-(dismissed)="closeModal();"
-[appTelemetryImpression]="telemetryImpression"
-#userLocationModal *ngIf='userRegCheckPopup'>
-
-<!--Header-->
-<i class="close icon" (click)="back()"></i>
-<div class="sb-modal-header">
-</div>
-<!--/Header-->
-
-<!--Content-->
-<div class="sb-modal-content o-y-visible font-align" [appTelemetryImpression]="telemetryImpression" style="margin-left:145px;">
-  <button class="sb-btn sb-btn-normal sb-btn-primary" (click)="chkUserWithHrms()">Register with HRMS ID</button>   &nbsp;&nbsp;&nbsp;                
-            <button class="sb-btn sb-btn-normal sb-btn-primary" (click)="chkUserWithoutHrms()">Register without HRMS ID</button>&nbsp;
-</div>
-<!--/Actions-->
-</sui-modal>
-
-
-
 
 <sui-modal
 [mustScroll]="true"
@@ -150,7 +124,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">HRMS ID/Employee ID<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="hrmsID"   [(ngModel)]="hrmsData.HRMS_ID"  aria-label="Enter Joining Date" type="text"  name="hrmsID"
+              <input class="sb-form-control" formControlName="hrmsID" [attr.disabled]="hrmsIdDataCheck? true : null"   [(ngModel)]="hrmsData.HRMS_ID"  aria-label="Enter Joining Date" type="text"  name="hrmsID"
                 placeholder="HRMS ID/Employee ID" autofocus>
 
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.hrmsID.invalid && userRegistration.controls['hrmsID'].errors.required  && !userRegistration.controls['hrmsID'].pristine">
@@ -167,7 +141,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Full Name<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="fName" aria-label="Enter Name" type="text" [(ngModel)]="hrmsData.EMP_NAME"   name="fName"
+              <input class="sb-form-control" formControlName="fName" aria-label="Enter Name" type="text" [(ngModel)]="hrmsData.EMP_NAME" name="fName"
                 placeholder="First Name" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.fName.invalid && userRegistration.controls['fName'].errors.required  && !userRegistration.controls['fName'].pristine">
                   Enter User Name
@@ -224,7 +198,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">CFMS ID<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="cfmsID" [(ngModel)]="hrmsData.CFMS_ID"  aria-label="Enter CFMS ID" type="text"   name="cfmsID"
+              <input class="sb-form-control" formControlName="cfmsID" [(ngModel)]="hrmsData.CFMS_ID"  aria-label="Enter CFMS ID" type="text" name="cfmsID"
                 placeholder="CFMS ID" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.cfmsID.invalid && userRegistration.controls['cfmsID'].errors.required  && !userRegistration.controls['cfmsID'].pristine">
                   Enter cfms id
@@ -240,7 +214,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Secretariat Name<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control"    [(ngModel)]="hrmsData.SECRETARIAT_NAME"  formControlName="secName" aria-label="Enter Secretariat Name" type="text" name="secName"
+              <input class="sb-form-control" [(ngModel)]="hrmsData.SECRETARIAT_NAME"  formControlName="secName" aria-label="Enter Secretariat Name" type="text" name="secName"
                 placeholder="Secretariat Name" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secName.invalid && userRegistration.controls['secName'].errors.required  && !userRegistration.controls['secName'].pristine">
                   Enter secretariat name
@@ -255,7 +229,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Secretariat Code<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="secCode"  [(ngModel)]="hrmsData.SECRETARIAT_CODE"  aria-label="Enter Secretariat Code" type="text" name="secCode"
+              <input class="sb-form-control" formControlName="secCode" [(ngModel)]="hrmsData.SECRETARIAT_CODE"  aria-label="Enter Secretariat Code" type="text" name="secCode"
                 placeholder="Secretariat Code" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secCode.invalid && userRegistration.controls['secCode'].errors.required  && !userRegistration.controls['secCode'].pristine">
                   Enter secretariat code
@@ -410,7 +384,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Education<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="education" aria-label="Enter Education" [(ngModel)]="hrmsData.QUALIFICATION"   type="text" name="education"
+              <input class="sb-form-control" formControlName="education" aria-label="Enter Education" [(ngModel)]="hrmsData.QUALIFICATION"  type="text" name="education"
                 placeholder="Education" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.education.invalid && userRegistration.controls['education'].errors.required  && !userRegistration.controls['education'].pristine">
                   Enter Education
@@ -424,7 +398,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Job Profile<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="jobName" aria-label="Enter Job Profile" [(ngModel)]="hrmsData.DESIGNATION"  type="text" name="jobName"
+              <input class="sb-form-control" formControlName="jobName" aria-label="Enter Job Profile" [(ngModel)]="hrmsData.DESIGNATION" type="text" name="jobName"
                 placeholder="Job Profile">
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.jobName.invalid && userRegistration.controls['jobName'].errors.required  && !userRegistration.controls['jobName'].pristine">
                   Enter Job Profile

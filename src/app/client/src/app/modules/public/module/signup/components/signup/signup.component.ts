@@ -66,8 +66,7 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
   isP1CaptchaEnabled: any;
 
 
-  hrmsIDPopup:boolean=false;
-  userRegCheckPopup:boolean=true;
+  hrmsIDPopup:boolean=true;
   userHrmsIdForm: FormGroup;
   hrmsData: any;
   genericPoup: boolean;
@@ -119,6 +118,10 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
   hrmsResponse: Response;
   emailIdDataCheck: boolean=false;
   hrmsIdDataCheck: boolean=false;
+  
+  
+
+
   constructor(formBuilder: FormBuilder, public resourceService: ResourceService,
     public signupService: SignupService, public toasterService: ToasterService,
     public tenantService: TenantService, public deviceDetectorService: DeviceDetectorService,
@@ -130,9 +133,14 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
+
+    
+
     this.userHrmsIdForm = this.fb.group({
       addHrmsId: new FormControl(null,Validators.required)
     })
+
+
     //this.gender = [{name:'Male',option:'Male'},{name:'Female',option:'Female'}]
 
     this.userRegistration = this.fb.group({
@@ -223,35 +231,7 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
 
      // this.gethrmsData();
   }
-  chkUserWithHrms()
-  {
-    this.userRegCheckPopup = false;
-    this.hrmsIDPopup = true;
 
-  }
-
-  chkUserWithoutHrms()
-  {
-    this.userRegCheckPopup = false;
-    this.hrmsData= {
-      'MOBILE':null,
-      'EMP_MAIL_ID':null,
-      'EMP_NAME':null,
-      'GENDER':null,
-      'QUALIFICATION':null,
-      'DESIGNATION':null,
-      'DEPARTMENT':null,
-      "SECRETARIAT_NAME": null,
-      "SECRETARIAT_CODE":null,
-      "MANDAL_NAME": null,
-      "DISTRICT_NAME": null,
-      "HRMS_ID":null,
-      "CFMS_ID":null
-      
-    }
-    this.userRegForm = true;
-    
-  }
 
  hrmsIdSubmit(){
     let data:any;
@@ -260,8 +240,8 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
       "KEY":'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'
       }
     this.http.post('https://apgsws.in/learner/user/v1/gethrmsData?HRMS_ID='+this.userHrmsIdForm.value['addHrmsId'], data).subscribe(res => {
-      //console.log(res);
-      //console.log(res['status']);
+      console.log(res);
+      console.log(res['status']);
     
      if(res['status']==true)
      {
@@ -285,20 +265,20 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
   
   
       }*/
-     this.hrmsData= {
-      'MOBILE':res['result'][0]['MOBILE'],
-      'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID'],
-      'EMP_NAME':res['result'][0]['EMP_NAME'],
-      'GENDER':res['result'][0]['GENDER'],
-      'QUALIFICATION':res['result'][0]['QUALIFICATION'],
-      'DESIGNATION':res['result'][0]['DESIGNATION'],
-      'DEPARTMENT':res['result'][0]['DEPARTMENT'],
-      "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME'],
-      "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE'],
-      "MANDAL_NAME": res['result'][0]['MANDAL_NAME'],
-      "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME'],
-      "HRMS_ID":res['result'][0]['HRMS_ID'],
-      "CFMS_ID":res['result'][0]['CFMS_ID']
+      this.hrmsData= {
+      'MOBILE':res['result'][0]['MOBILE']!=null ? res['result'][0]['MOBILE'] : '',
+      'EMP_MAIL_ID':res['result'][0]['EMP_MAIL_ID']!=null ? res['result'][0]['EMP_MAIL_ID']: '',
+      'EMP_NAME':res['result'][0]['EMP_NAME']!=null ? res['result'][0]['EMP_NAME']: '',
+      'GENDER':res['result'][0]['GENDER']!=null ? res['result'][0]['GENDER']: '',
+      'QUALIFICATION':res['result'][0]['QUALIFICATION']!=null ? res['result'][0]['QUALIFICATION']: '',
+      'DESIGNATION':res['result'][0]['DESIGNATION']!=null ? res['result'][0]['DESIGNATION']: '',
+      'DEPARTMENT':res['result'][0]['DEPARTMENT']!=null ? res['result'][0]['DEPARTMENT']: '',
+      "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME']!=null ? res['result'][0]['SECRETARIAT_NAME']: '',
+      "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE']!=null ? res['result'][0]['SECRETARIAT_CODE']: '',
+      "MANDAL_NAME": res['result'][0]['MANDAL_NAME']!=null ? res['result'][0]['MANDAL_NAME']: '',
+      "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME']!=null ? res['result'][0]['DISTRICT_NAME']: '',
+      "HRMS_ID":res['result'][0]['HRMS_ID']!=null ? res['result'][0]['HRMS_ID']: '',
+      "CFMS_ID":res['result'][0]['CFMS_ID']!=null ? res['result'][0]['CFMS_ID']: ''
     }
      if(this.hrmsData.MOBILE!=null)
      {
