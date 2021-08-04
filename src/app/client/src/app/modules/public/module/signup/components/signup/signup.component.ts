@@ -262,8 +262,6 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
         "MANDAL_NAME": "B KOTHAKOTA",
         "DISTRICT_NAME": "CHITTOOR",
         "AGE":"10"
-  
-  
       }*/
       this.hrmsData= {
       'MOBILE':res['result'][0]['MOBILE']!=null ? res['result'][0]['MOBILE'] : '',
@@ -272,13 +270,14 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
       'GENDER':res['result'][0]['GENDER']!=null ? res['result'][0]['GENDER']: '',
       'QUALIFICATION':res['result'][0]['QUALIFICATION']!=null ? res['result'][0]['QUALIFICATION']: '',
       'DESIGNATION':res['result'][0]['DESIGNATION']!=null ? res['result'][0]['DESIGNATION']: '',
-      'DEPARTMENT':res['result'][0]['DEPARTMENT']!=null ? res['result'][0]['DEPARTMENT']: '',
+      'DEPARTMENT':res['result'][0]['DEPARTMENT']!=null ? res['result'][0]['DEPARTMENT']: null,
       "SECRETARIAT_NAME": res['result'][0]['SECRETARIAT_NAME']!=null ? res['result'][0]['SECRETARIAT_NAME']: '',
       "SECRETARIAT_CODE": res['result'][0]['SECRETARIAT_CODE']!=null ? res['result'][0]['SECRETARIAT_CODE']: '',
       "MANDAL_NAME": res['result'][0]['MANDAL_NAME']!=null ? res['result'][0]['MANDAL_NAME']: '',
       "DISTRICT_NAME": res['result'][0]['DISTRICT_NAME']!=null ? res['result'][0]['DISTRICT_NAME']: '',
       "HRMS_ID":res['result'][0]['HRMS_ID']!=null ? res['result'][0]['HRMS_ID']: '',
-      "CFMS_ID":res['result'][0]['CFMS_ID']!=null ? res['result'][0]['CFMS_ID']: ''
+      "CFMS_ID":res['result'][0]['CFMS_ID']!=null ? res['result'][0]['CFMS_ID']: '',
+	   "AGE":res['result'][0]['AGE']!=null ? res['result'][0]['AGE']: null
     }
      if(this.hrmsData.MOBILE!=null)
      {
@@ -1299,6 +1298,7 @@ onChange1(frmDivVal)
        console.log("sdssssssssssssss===");
       console.log(division);
       this.mandalList = [];
+	  this.divList = [];
       for (let divKey in division) {
        // if(key == distrcictVal)
         this.divList.push( {'divName' :divKey,'divVal':divKey}) 
