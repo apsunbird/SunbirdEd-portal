@@ -216,7 +216,7 @@ export class SignupComponent implements OnInit, OnDestroy, AfterViewInit {
       confirmpassword: new FormControl(null,[Validators.required,Validators.minLength(8)]),
       designation: new FormControl(null),
       qualification: new FormControl(null),
-      departmentap: new FormControl(null,Validators.required)
+      departmentap: new FormControl(null,Validators.required),
       ageap: new FormControl(null)  
     },{ 
       validator: ConfirmedValidator('password', 'confirmpassword')
