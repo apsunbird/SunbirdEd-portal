@@ -31,7 +31,6 @@ Enter HRMS ID
 
 
 
-
 </form>
 </div>
 <!--/Content-->
@@ -123,12 +122,12 @@ Create User
 
 <div class="sb-field">
   <div class="required field mb-8">
-      <label class="mb-10 font-weight-bold">HRMS ID/Employee ID<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="hrmsID" [attr.disabled]="hrmsIdDataCheck? true : null"   [(ngModel)]="hrmsData.HRMS_ID"  aria-label="Enter Joining Date" type="text"  name="hrmsID"
-                placeholder="HRMS ID/Employee ID" autofocus>
+      <label class="mb-10 font-weight-bold">HRMS ID<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="hrmsID" aria-label="Enter HRMS ID" type="text"  name="hrmsID"
+                placeholder="HRMS ID" autofocus>
 
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.hrmsID.invalid && userRegistration.controls['hrmsID'].errors.required  && !userRegistration.controls['hrmsID'].pristine">
-                  Enter hrms id/employee id
+                  Enter Enter HRMS ID
                 </div>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('hrmsID').hasError('pattern')">
                    Only alphanumeric is allowed
@@ -141,10 +140,10 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Full Name<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="fName" aria-label="Enter Name" type="text" [(ngModel)]="hrmsData.EMP_NAME"  [attr.disabled]="editName? true : null"  name="fName"
+              <input class="sb-form-control" formControlName="fName" aria-label="Enter Full Name" type="text" name="fName"
                 placeholder="First Name" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.fName.invalid && userRegistration.controls['fName'].errors.required  && !userRegistration.controls['fName'].pristine">
-                  Enter User Name
+                  Enter Full Name
                 </div>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('fName').hasError('pattern')">
                    Only alphabet is allowed
@@ -170,7 +169,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Gender<span class="sb-color-warning">*</span></label>
-               <select  class="selection sb-form-control" formControlName="gender" [(ngModel)]="hrmsData.GENDER" [attr.disabled]="genderData? true : null">
+               <select  class="selection sb-form-control" formControlName="gender">
                   <option value="null">Select Gender</option>
                   <option  value="MALE">Male</option>  
                   <option  value="FEMALE">Female</option>  
@@ -198,7 +197,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">CFMS ID<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="cfmsID" [(ngModel)]="hrmsData.CFMS_ID"  aria-label="Enter CFMS ID" type="text" [attr.disabled]="cfmsID? true : null"  name="cfmsID"
+              <input class="sb-form-control" formControlName="cfmsID" aria-label="Enter CFMS ID" type="text" name="cfmsID"
                 placeholder="CFMS ID" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.cfmsID.invalid && userRegistration.controls['cfmsID'].errors.required  && !userRegistration.controls['cfmsID'].pristine">
                   Enter cfms id
@@ -211,34 +210,7 @@ Create User
 
 
 
-<div class="sb-field">
-  <div class="required field mb-8">
-      <label class="mb-10 font-weight-bold">Secretariat Name<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control"  [attr.disabled]="secName? true : null"  [(ngModel)]="hrmsData.SECRETARIAT_NAME"  formControlName="secName" aria-label="Enter Secretariat Name" type="text" name="secName"
-                placeholder="Secretariat Name" autofocus>
-                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secName.invalid && userRegistration.controls['secName'].errors.required  && !userRegistration.controls['secName'].pristine">
-                  Enter secretariat name
-                </div>
-                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('secName').hasError('pattern')">
-                   Only alphanumeric is allowed
-                </div>
-    </div>
-</div>
 
-
-<div class="sb-field">
-  <div class="required field mb-8">
-      <label class="mb-10 font-weight-bold">Secretariat Code<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="secCode" [attr.disabled]="secCode? true : null"  [(ngModel)]="hrmsData.SECRETARIAT_CODE"  aria-label="Enter Secretariat Code" type="text" name="secCode"
-                placeholder="Secretariat Code" autofocus>
-                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secCode.invalid && userRegistration.controls['secCode'].errors.required  && !userRegistration.controls['secCode'].pristine">
-                  Enter secretariat code
-                </div>
-                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('secCode').hasError('pattern')">
-                   Only alphanumeric is allowed
-                </div>
-    </div>
-</div>
 
 
 
@@ -291,7 +263,7 @@ Create User
                 placeholder="Mandal/ULB" autofocus>-->
 
 
-                <select  class="selection sb-form-control" formControlName="mandalULB" (onChange)="handleSelectChangeRevDiv(event)" >
+                <select  class="selection sb-form-control" formControlName="mandalULB" (change)="onChange2($event.target.value)" >
                   <option value="null">Select Mandal/ULB</option>
                   <option *ngFor="let dataObj of mandalListNew" [value]="dataObj.mandalNamedata">{{dataObj.mnadalValData}}</option>  
                 </select>
@@ -305,10 +277,49 @@ Create User
 
 
 
+
+
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Secretariat Name<span class="sb-color-warning">*</span></label>
+             <!-- <input class="sb-form-control"  formControlName="secName" aria-label="Enter Secretariat Name" type="text" name="secName"
+                placeholder="Secretariat Name" autofocus>-->
+
+
+                <select  class="selection sb-form-control" formControlName="secName" (change)="onChange3($event.target.value)" >
+                  <option value="null">Select Secretariat Name</option>
+                  <option *ngFor="let dataObj of secNameDataList" [value]="dataObj.secCodeVal">{{dataObj.secCodeName}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secName.invalid && userRegistration.controls['secName'].errors.required  && !userRegistration.controls['secName'].pristine">
+                  Enter secretariat name
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('secName').hasError('pattern')">
+                   Only alphanumeric is allowed
+                </div>
+    </div>
+</div>
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Secretariat Code<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="secCode" disabled= "true" [(ngModel)]= "secCodeList"  aria-label="Enter Secretariat Code" type="text" name="secCode"
+                placeholder="Secretariat Code" autofocus>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.secCode.invalid && userRegistration.controls['secCode'].errors.required  && !userRegistration.controls['secCode'].pristine">
+                  Enter secretariat code
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.get('secCode').hasError('pattern')">
+                   Only alphanumeric is allowed
+                </div>
+    </div>
+</div>
+
   <div class="sb-field">
     <div class="required field mb-4">
         <label class="mb-10 font-weight-bold">Mobile Number<span class="sb-color-warning">*</span></label>
-                <input class="sb-form-control" [attr.disabled]="editMobile? true : null" formControlName="mobileNumber" [(ngModel)]="hrmsData.MOBILE"  aria-label="Enter Name" type="text" name="mobileNumber"
+                <input class="sb-form-control"  formControlName="mobileNumber"  aria-label="Enter Name" type="text" name="mobileNumber"
                   placeholder="Mobile Number" autofocus>
 
                   <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.mobileNumber.invalid && userRegistration.controls['mobileNumber'].errors.required && !userRegistration.controls['mobileNumber'].pristine">
@@ -324,8 +335,8 @@ Create User
   <div class="sb-field">
     <div class="required field mb-4">
         <label class="mb-10 font-weight-bold">Email ID<span class="sb-color-warning">*</span></label>
-                <input class="sb-form-control" formControlName="emailId" aria-label="Enter Email Id" type="text" [(ngModel)]="hrmsData.EMP_MAIL_ID"  name="emailId"
-                  placeholder="Email ID"  [attr.disabled]="emailIdDataCheck? true : null" autofocus>
+                <input class="sb-form-control" formControlName="emailId" aria-label="Enter Email Id" type="text"  name="emailId"
+                  placeholder="Email ID"  autofocus>
                   <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.emailId.invalid && userRegistration.controls['emailId'].errors.required && !userRegistration.controls['emailId'].pristine">
                       Enter email id
                     </div>
@@ -384,7 +395,7 @@ Create User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Education<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="education" aria-label="Enter Education" [(ngModel)]="hrmsData.QUALIFICATION" [attr.disabled]="qualificationlist? true : null"  type="text" name="education"
+              <input class="sb-form-control" formControlName="education" aria-label="Enter Education"   type="text" name="education"
                 placeholder="Education" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.education.invalid && userRegistration.controls['education'].errors.required  && !userRegistration.controls['education'].pristine">
                   Enter Education
@@ -395,10 +406,10 @@ Create User
     </div>
 </div>
 
-<div class="sb-field">
+<!--<div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Job Profile<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="jobName" aria-label="Enter Job Profile" [(ngModel)]="hrmsData.DESIGNATION"  [attr.disabled]="designation? true : null" type="text" name="jobName"
+              <input class="sb-form-control" formControlName="jobName" aria-label="Enter Job Profile" type="text" name="jobName"
                 placeholder="Job Profile">
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.jobName.invalid && userRegistration.controls['jobName'].errors.required  && !userRegistration.controls['jobName'].pristine">
                   Enter Job Profile
@@ -407,43 +418,50 @@ Create User
                    Only alphanumeric is allowed
                 </div>
     </div>
-</div>
-
-<!--<div class="sb-field">
-  <div class="required field mb-8">
-      <label class="mb-10 font-weight-bold">Department Name<span class="sb-color-warning">*</span></label>-->
-            
-
-               <!--- <sui-select class="selection sb-form-control" formControlName="orgName" [options]="orgNameList"
-                [placeholder]="'Select Department Name'" labelField="orgName" valueField="orgName" #orgName> 
-                <sui-select-option *ngFor="let channel of orgName.filteredOptions" [value]="channel">
-                </sui-select-option>
-              </sui-select>-->
-
-
-
-             <!---- <select  class="selection sb-form-control" formControlName="orgName">
-                <option value="null">Select Department</option>
-                <option *ngFor="let dataObj of orgNameList" [value]="dataObj.channel">{{dataObj.orgName}}</option>  
-              </select>
-              <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.gender.invalid && userRegistration.controls['gender'].errors.required  && !userRegistration.controls['gender'].pristine">
-               Enter department name
-                </div>
-    </div>
 </div>-->
 
 
 
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Designation<span class="sb-color-warning">*</span></label>
+                <select  class="selection sb-form-control" formControlName="jobName">
+                  <option value="null">Select Designation</option>
+                  <option *ngFor="let dataObj of desigNationList" [value]="dataObj.val">{{dataObj.name}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.jobName.invalid && userRegistration.controls['jobName'].errors.required  && !userRegistration.controls['jobName'].pristine">
+                  Select Designation
+                </div>
+    </div>
+</div>
 
 
 
 
 
-<input type="hidden" formControlName="designation" [(ngModel)]="hrmsData.DESIGNATION" />
-<input type="hidden" formControlName="departmentap" [(ngModel)]="hrmsData.DEPARTMENT" />
-<input type="hidden" formControlName="ageap" [(ngModel)]="hrmsData.AGE" />
-<!--<input type="hidden" formControlName="qualification" [(ngModel)]="hrmsData.QUALIFICATION" />-->
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Department<span class="sb-color-warning">*</span></label>
+                <select  class="selection sb-form-control" formControlName="departmentap">
+                  <option value="null">Select Department</option>
+                  <option *ngFor="let dataObj of departMentList" [value]="dataObj.val">{{dataObj.name}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userRegistration.controls.departmentap.invalid && userRegistration.controls['departmentap'].errors.required  && !userRegistration.controls['departmentap'].pristine">
+                  Select Department
+                </div>
+    </div>
+</div>
 
+
+
+
+
+
+
+
+<!--<input type="hidden" formControlName="designation" />
+<input type="hidden" formControlName="departmentap"  />-->
+<input type="hidden" formControlName="ageap" />
 </form>
 </div>
 <!--/Content-->
