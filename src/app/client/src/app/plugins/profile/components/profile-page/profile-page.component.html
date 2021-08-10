@@ -53,67 +53,49 @@
 
     </div>-->
 
-
-
+     <div style="float: right;"> <button class="sb-btn sb-btn-normal sb-btn-primary" (click)="editUserFrm( )">Edit User</button></div>
         <table  id="downloadTable"  class="sb-table sb-table-striped sb-table-sortable sb-table-fixed sb-table-course-dashboard"
         cellspacing="0">
         <tbody class="sb-table-body">
           <tr>
-
-           
                 <td><b>DOB</b> </td>
                 <td>{{dobdata}}</td>
 				 <td><b>Gender</b></td>
                 <td>{{genderData}}</td>
                 </tr>
                 <tr>
-               
-               
                 <td><b>Education</b></td>
-                <td>{{eduCation}}</td>
-				
-				 <td><b>Job Profile</b> </td>
-                <td>{{jobProfileCode}}</td>
-                </tr>
-                <tr>
-               
-                
+                <td>{{eduCation}}</td>      
                 <td><b>Joining Date</b> </td>
                 <td>{{joinDate}}</td>
-				
+                </tr>
+                <tr>
 				 <td><b>HRMS ID/Employee ID</b> </td>
                 <td>{{hrmsId}}</td>
-                </tr>
-                <tr>
-               
-               
                 <td><b>CFMS ID</b></td>
                 <td>{{cfmsId}}</td>
-				
-				  <td><b>Secretariat Name</b></td>
-                <td>{{secName}}</td>
-                </tr>
-
-                <tr>
-                
-               
-            <td><b>Secretariat Code</b></td>
-                <td>{{secCode}}</td>
-				
+              </tr>
+              <tr>
 				  <td><b>Mandal/ULB</b></td>
                 <td>{{mandal}}</td>
-                </tr>
-
-
-
-                <tr>
-                
-               
                 <td><b>Revenue Division</b></td>
                 <td>{{revDiv}}</td>
-              
+                </tr>
+                <tr>
                   <td><b>District</b></td>
                 <td>{{districtName}}</td>
+                <td><b>Secretariat Name</b></td>
+                <td>{{secName}}</td>
+                </tr>
+                <tr>      
+                  <td><b>Secretariat Code</b></td>
+                  <td>{{secCode}}</td>
+                  <td><b>Designation</b> </td>
+                  <td>{{jobProfileCode}}</td>
+                  </tr>
+                  <tr>
+                  <td><b>Department</b></td>
+                  <td>{{departMentListData}}</td>
                 </tr>
         </tbody>
       </table>
@@ -505,5 +487,361 @@
     </div>-->
   <!--</app-location-selection>
   <app-account-recovery-info *ngIf="showRecoveryId" [mode]="mode" (close)="showRecoveryId = !showRecoveryId"></app-account-recovery-info>-->
+  
+  
+  
+  <sui-modal
+[mustScroll]="true"
+[isClosable]="false"
+[transitionDuration]="0"
+[size]="'normal'"
+class="sb-modal"
+(dismissed)="closeModal();"
+[appTelemetryImpression]="telemetryImpression"
+#userLocationModal11 *ngIf='editUserPopup'>
+
+<!--Header-->
+<i class="close icon" (click)="closepopup()"></i>
+<div class="sb-modal-header">
+Edit User
+</div>
+<!--/Header-->
+
+<!--Content-->
+<div class="sb-modal-content o-y-visible" [appTelemetryImpression]="telemetryImpression">
+<form class="sb-form" [formGroup]="userEditRegistration" id="validateFoem">
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">HRMS ID<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="hrmsID"  [(ngModel)]="hrmsIdData"  aria-label="Enter HRMS id" type="text" disabled= "true" name="hrmsID"
+                placeholder="HRMS ID">
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.hrmsID.invalid && userEditRegistration.controls['hrmsID'].errors.required  && !userEditRegistration.controls['hrmsID'].pristine">
+                  Enter hrms id
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('hrmsID').hasError('pattern')">
+                   Only alphanumeric is allowed
+                </div>
+    </div>
+   
+</div>
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Full Name<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="fName" aria-label="Enter Name" type="text"  [(ngModel)]="fullName"    name="fName"
+                placeholder="First Name">
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.fName.invalid && userEditRegistration.controls['fName'].errors.required  && !userEditRegistration.controls['fName'].pristine">
+                  Enter Full Name
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('fName').hasError('pattern')">
+                   Only alphabet is allowed
+                </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">DOB<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="dob" aria-label="Enter DOB" type="date" [(ngModel)]="editDob" name="dob"
+                placeholder="DOB">
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.dob.invalid && userEditRegistration.controls['dob'].errors.required  && !userEditRegistration.controls['dob'].pristine">
+                  Enter DOB
+                </div>
+    </div>
+</div>
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Gender<span class="sb-color-warning">*</span></label>
+               <select  class="selection sb-form-control" formControlName="gender" [(ngModel)]="editGender">
+                  <option value="null">Select Gender</option>
+                  <option  value="MALE">Male</option>  
+                  <option  value="FEMALE">Female</option>  
+                  <option  value="OTHERS">Others</option> 
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.gender.invalid && userEditRegistration.controls['gender'].errors.required  && !userEditRegistration.controls['gender'].pristine">
+                  Select gender
+                </div>
+    </div>
+</div>
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Joining Date<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="joinDate" aria-label="Enter Joining Date" [(ngModel)]="editJoinDate" type="date" name="joinDate"
+                placeholder="Joining Date">
+
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.gender.invalid && userEditRegistration.controls['gender'].errors.required  && !userEditRegistration.controls['gender'].pristine">
+                  Enter Joining Date
+                   </div>
+    </div>
+</div>
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">CFMS ID<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="cfmsID" [(ngModel)]="editCfmsId"  aria-label="Enter CFMS ID" type="text"  name="cfmsID"
+                placeholder="CFMS ID">
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.cfmsID.invalid && userEditRegistration.controls['cfmsID'].errors.required  && !userEditRegistration.controls['cfmsID'].pristine">
+                  Enter cfms id
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('cfmsID').hasError('pattern')">
+                   Only alphanumeric is allowed
+                </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">District<span class="sb-color-warning">*</span></label>
+              <!--<input class="sb-form-control" formControlName="district"  [attr.disabled]=districtName  [(ngModel)]="hrmsData.DISTRICT_NAME" aria-label="Enter District" type="text" name="district"
+                placeholder="District:" autofocus>-->
+
+
+                <select  class="selection sb-form-control" formControlName="district"  (change)="onChange($event.target.value)" [(ngModel)]="editDistrictName" >
+                  <option value="null">Select District</option>
+                  <option *ngFor="let dataObj of districtList" [value]="dataObj.districtName">{{dataObj.districtVal}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.district.invalid && userEditRegistration.controls['district'].errors.required  && !userEditRegistration.controls['district'].pristine">
+                  Select District
+                </div>
+    </div>
+</div>
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Revenue Division<span class="sb-color-warning">*</span></label>
+              <!--<input class="sb-form-control" formControlName="revDiv"  aria-label="Enter Revenue Division" type="text" name="revDiv"
+                placeholder="Revenue Division" autofocus>-->
+
+
+                <select  class="selection sb-form-control" formControlName="revDiv" (change)="onChange1($event.target.value)"  [(ngModel)]="editRevDiv" >
+                  <option value="null">Select Revenue Division</option>
+                  <option *ngFor="let dataObj of divList" [value]="dataObj.divName">{{dataObj.divVal}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.revDiv.invalid && userEditRegistration.controls['revDiv'].errors.required  && !userEditRegistration.controls['revDiv'].pristine">
+                  Select Revenue Division
+                </div>
+    </div>
+</div>
+
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Mandal/ULB<span class="sb-color-warning">*</span></label>
+             <!--- <input class="sb-form-control" formControlName="mandalULB" [attr.disabled]=mandalName  [(ngModel)]="hrmsData.MANDAL_NAME" aria-label="Enter Mandal/ULB" type="text" name="mandalULB"
+                placeholder="Mandal/ULB" autofocus>-->
+
+
+                <select  class="selection sb-form-control" formControlName="mandalULB"    [(ngModel)]="editMandal" (change)="onChange2($event.target.value)">
+                  <option value="null">Select Mandal/ULB</option>
+                  <option *ngFor="let dataObj of mandalListNew" [value]="dataObj.mandalNamedata">{{dataObj.mnadalValData}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.mandalULB.invalid && userEditRegistration.controls['mandalULB'].errors.required  && !userEditRegistration.controls['mandalULB'].pristine">
+                  Select mandal/uLB
+                </div>
+    </div>
+</div>
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Secretariat Name<span class="sb-color-warning">*</span></label>
+             <!-- <input class="sb-form-control"  formControlName="secName" aria-label="Enter Secretariat Name" type="text" name="secName"
+                placeholder="Secretariat Name" autofocus>-->
+
+
+                <select  class="selection sb-form-control" formControlName="secName" [(ngModel)]="editSecName" (change)="onChange3($event.target.value)"   >
+                  <option value="null">Select Secretariat Name</option>
+                  <option *ngFor="let dataObj of secNameDataList" [value]="dataObj.secCodeVal">{{dataObj.secCodeName}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.secName.invalid && userEditRegistration.controls['secName'].errors.required  && !userEditRegistration.controls['secName'].pristine">
+                  Enter secretariat name
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('secName').hasError('pattern')">
+                   Only alphanumeric is allowed
+                </div>
+    </div>
+</div>
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Secretariat Code<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="secCode"  [(ngModel)]="editSecCode"  disabled= "true" [(ngModel)]= "secCodeList"  aria-label="Enter Secretariat Code" type="text" name="secCode"
+                placeholder="Secretariat Code" autofocus>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.secCode.invalid && userEditRegistration.controls['secCode'].errors.required  && !userEditRegistration.controls['secCode'].pristine">
+                  Enter secretariat code
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('secCode').hasError('pattern')">
+                   Only alphanumeric is allowed
+                </div>
+    </div>
+</div>
+
+
+
+
+
+  <div class="sb-field">
+    <div class="required field mb-4">
+        <label class="mb-10 font-weight-bold">Mobile Number<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control"  formControlName="mobileNumber" [(ngModel)]="editMobileNumber"  disabled= "true" aria-label="Enter Name" type="text" name="mobileNumber"
+                  placeholder="Mobile Number">
+
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.mobileNumber.invalid && userEditRegistration.controls['mobileNumber'].errors.required && !userEditRegistration.controls['mobileNumber'].pristine">
+                      Enter mobile no
+                    </div>
+                    <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('mobileNumber').hasError('pattern')">
+                      Enter correct mobile no
+                    </div>
+      </div>
+  </div>
+
+
+  <div class="sb-field">
+    <div class="required field mb-4">
+        <label class="mb-10 font-weight-bold">Email ID<span class="sb-color-warning">*</span></label>
+                <input class="sb-form-control" formControlName="emailId" aria-label="Enter Email Id" type="text" disabled= "true"  [(ngModel)]="editEmailld"   name="emailId"
+                  placeholder="Email ID">
+                  <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.emailId.invalid && userEditRegistration.controls['emailId'].errors.required && !userEditRegistration.controls['emailId'].pristine">
+                      Enter email id
+                    </div>
+                    <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('emailId').hasError('pattern')">
+                     Enter correct email id
+                    </div>
+      </div>
+  </div>
+
+
+
+
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Education<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="education" aria-label="Enter Education" [(ngModel)]="editEduCation"  type="text" name="education"
+                placeholder="Education">
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.education.invalid && userEditRegistration.controls['education'].errors.required  && !userEditRegistration.controls['education'].pristine">
+                  Enter Education
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('education').hasError('pattern')">
+                   Only alphabet is allowed
+                </div>
+    </div>
+</div>
+
+<!--<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Job Profile<span class="sb-color-warning">*</span></label>
+              <input class="sb-form-control" formControlName="jobName" aria-label="Enter Job Profile" [(ngModel)]="editJobProfile" type="text" name="jobName"
+                placeholder="Job Profile">
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.jobName.invalid && userEditRegistration.controls['jobName'].errors.required  && !userEditRegistration.controls['jobName'].pristine">
+                  Enter Job Profile
+                </div>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.get('jobName').hasError('pattern')">
+                   Only alphanumeric is allowed
+                </div>
+    </div>
+</div>-->  
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Designation<span class="sb-color-warning">*</span></label>
+                <select  class="selection sb-form-control" [(ngModel)]="editDesignation" formControlName="jobName">
+                  <option value="null">Select Designation</option>
+                  <option *ngFor="let dataObj of desigNationList" [value]="dataObj.val">{{dataObj.name}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.jobName.invalid && userEditRegistration.controls['jobName'].errors.required  && !userEditRegistration.controls['jobName'].pristine">
+                  Select Designation
+                </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="sb-field">
+  <div class="required field mb-8">
+      <label class="mb-10 font-weight-bold">Department<span class="sb-color-warning">*</span></label>
+                <select  class="selection sb-form-control" [(ngModel)]="editDepartment"  formControlName="departmentap">
+                  <option value="null">Select Department</option>
+                  <option *ngFor="let dataObj of departMentList" [value]="dataObj.val">{{dataObj.name}}</option>  
+                </select>
+                <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.departmentap.invalid && userEditRegistration.controls['departmentap'].errors.required  && !userEditRegistration.controls['departmentap'].pristine">
+                  Select Department
+                </div>
+    </div>
+</div>
+
+
+
+
+<input type="hidden" formControlName="userId" [(ngModel)]="logedInUserId" />
+<!--<input type="hidden" formControlName="departmentap" [(ngModel)]="departMentAp" />-->
+<input type="hidden" formControlName="ageap" [(ngModel)]="ageCode" />
+</form>
+</div>
+<!--/Content-->
+<!--Actions-->
+<div class="sb-modal-actions">
+<button  class="sb-btn sb-btn-primary sb-btn-normal flex-ai-jc-center" type="button"
+[disabled]="!userEditRegistration.valid || disableBtn" [ngClass]="{'sb-btn-disabled': !userEditRegistration.valid}"
+(click)="editUserDetail()">
+Submit
+</button>
+</div>
+<!--/Actions-->
+</sui-modal>
+
+
+<sui-modal
+  [mustScroll]="true"
+  [isClosable]="false"
+  [transitionDuration]="0"
+  [size]="'normal'"
+  class="sb-modal"
+  (dismissed)="closeModal();"
+  [appTelemetryImpression]="telemetryImpression"
+  #userLocationModal *ngIf='genericPoup'>
+  
+  <!--Header-->
+  <i class="close icon" (click)="closepopupgeneric()"></i>
+  <div class="sb-modal-header">
+  Message
+  </div>
+  <!--/Header-->
+  
+  <!--Content-->
+  <div class="sb-modal-content o-y-visible font-align" [appTelemetryImpression]="telemetryImpression">
+   {{genericMsg}}
+  </div>
+  
+  <!--/Actions-->
+  
+  </sui-modal>
 <router-outlet></router-outlet>
 

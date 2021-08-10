@@ -119,6 +119,16 @@ userUnBlock(data)
     const headers = { 'key': 'F5FC9F4A7EEDF37C93FFBDCFB34C5D1829984C5B3A6FDB3B95457CD324'}  
     return this.http.post('http://20.204.66.174:7788/userapi', tempArray,{'headers':headers})
   }
+  
+  
+  editUserDetail(data) {
+    console.log(data);
+    const options = {
+      url: this.configService.urlConFig.URLS.USER.UPDATE_USER_PROFILE,
+      data: data
+    };
+   return this.learnerService.patch(options);
+  }
 
 
 
