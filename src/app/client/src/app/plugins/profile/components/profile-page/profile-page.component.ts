@@ -720,7 +720,11 @@ let tempArray1:any;
   "request":{
      "firstName": this.userEditRegistration.value['fName'], //required
     "lastName": '$$$$$'+this.userEditRegistration.value['hrmsID']+'$#$#'+this.userEditRegistration.value['cfmsID']+'$#$#'+this.userEditRegistration.value['secCode']+'$#$#'+this.userEditRegistration.value['secName']+'$#$#'+this.userEditRegistration.value['ageap']+'$#$#'+this.userEditRegistration.value['jobName']+'$#$#'+this.userEditRegistration.value['education']+'$#$#'+this.userEditRegistration.value['departmentap']+'$#$#'+this.userEditRegistration.value['mandalULB']+'$#$#'+this.userEditRegistration.value['revDiv']+'$#$#'+this.userEditRegistration.value['district']+'$#$#'+this.userEditRegistration.value['emailId']+'$#$#'+this.userEditRegistration.value['mobileNumber']+'$#$#'+this.userEditRegistration.value['dob']+'$#$#'+this.userEditRegistration.value['joinDate']+'$#$#'+this.userEditRegistration.value['gender'],
-    "userId":this.logedInUserId
+    "userId":this.logedInUserId,
+	  "email": this.userEditRegistration.value['emailId'], //required
+    "phone": this.userEditRegistration.value['mobileNumber'],
+	"emailVerified": true,
+    "phoneVerified":true
   }
   } 
   this._httpService.editUserDetail(tempArray1).subscribe(res => {

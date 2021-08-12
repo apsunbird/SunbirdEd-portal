@@ -706,7 +706,7 @@ Edit User
   <div class="sb-field">
     <div class="required field mb-4">
         <label class="mb-10 font-weight-bold">Mobile Number<span class="sb-color-warning">*</span></label>
-                <input class="sb-form-control"  formControlName="mobileNumber" [(ngModel)]="editMobileNumber"  disabled= "true" aria-label="Enter Name" type="text" name="mobileNumber"
+                <input class="sb-form-control"  formControlName="mobileNumber" [(ngModel)]="editMobileNumber"  aria-label="Enter Name" type="text" name="mobileNumber"
                   placeholder="Mobile Number">
 
                   <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.mobileNumber.invalid && userEditRegistration.controls['mobileNumber'].errors.required && !userEditRegistration.controls['mobileNumber'].pristine">
@@ -722,7 +722,7 @@ Edit User
   <div class="sb-field">
     <div class="required field mb-4">
         <label class="mb-10 font-weight-bold">Email ID<span class="sb-color-warning">*</span></label>
-                <input class="sb-form-control" formControlName="emailId" aria-label="Enter Email Id" type="text" disabled= "true"  [(ngModel)]="editEmailld"   name="emailId"
+                <input class="sb-form-control" formControlName="emailId" aria-label="Enter Email Id" type="text"   [(ngModel)]="editEmailld"   name="emailId"
                   placeholder="Email ID">
                   <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.emailId.invalid && userEditRegistration.controls['emailId'].errors.required && !userEditRegistration.controls['emailId'].pristine">
                       Enter email id
