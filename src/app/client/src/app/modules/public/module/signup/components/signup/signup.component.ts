@@ -41552,6 +41552,73 @@ onChange3(secCode)
                 "THERLAM2": "10290388"
               }
             ]
+          },
+          {
+            "SEETHANAGARAM_R": [
+              {
+                "BOORJA": "10290511"
+              },
+              {
+                "RANGAMPETA": "10290526"
+              },
+              {
+                "LAXMIPURAM": "10290520"
+              },
+              {
+                "BAGGANDORAVALASA": "10290510"
+              },
+              {
+                "JOGIMPETA": "10290517"
+              },
+              {
+                "LATCHAYYAPETA": "10290519"
+              },
+              {
+                "TAMARAKANDI": "10290528"
+              },
+              {
+                "GADELAVALASA": "10290514"
+              },
+              {
+                "GEDDALUPPI": "10290515"
+              },
+              {
+                "GUTCHIMI": "10290516"
+              },
+              {
+                "NIDAGALLU": "10290521"
+              },
+              {
+                "PEDHABOGILA1": "10290523"
+              },
+              {
+                "PEDHABOGILA2": "10290524"
+              },
+              {
+                "PEDANKALAM": "10290522"
+              },
+              {
+                "SURAMPETA": "10290527"
+              },
+              {
+                "ANTIPETA": "10290509"
+              },
+              {
+                "VENKATAPURAM": "10290529"
+              },
+              {
+                "CHINABHOGILA": "10290512"
+              },
+              {
+                "R.VENKAMPETA": "10290525"
+              },
+              {
+                "DAYANIDIPURAM": "10290513"
+              },
+              {
+                "KHASAPETA": "10290518"
+              }
+            ]
           }
         ]
       },
@@ -46653,6 +46720,49 @@ onChange3(secCode)
             ]
           },
           {
+            "MYLAVARAM_R": [
+              {
+                "M.KAMBALADINNE": "11190620"
+              },
+              {
+                "PEDDAKOMERLA": "11190622"
+              },
+              {
+                "VADDIRALA": "11190625"
+              },
+              {
+                "DOMMARANANDYALA2": "11190619"
+              },
+              {
+                "MYLAVARAM": "11190621"
+              },
+              {
+                "VEPARALA2": "11190627"
+              },
+              {
+                "BESTHAVEMULA": "11190615"
+              },
+              {
+                "DOMMARANANDYALA1": "11190618"
+              },
+              {
+                "THALAMANCHIPATNAM": "11190623"
+              },
+              {
+                "DHODIUM": "11190617"
+              },
+              {
+                "THORRIVEMULA": "11190624"
+              },
+              {
+                "VEPARALA1": "11190626"
+              },
+              {
+                "CHINNAKOMERLA": "11190616"
+              }
+            ]
+          },
+          {
             "JAMMALAMADUGU_R": [
               {
                 "DEVAGUDI2": "11190418"
@@ -48505,103 +48615,6 @@ onChange3(secCode)
       {
         "Rajampet": [
           {
-            "KONDAPURAM_R": [
-              {
-                "CHINTHALADEVI": "10990630"
-              },
-              {
-                "GOTTIGUNDALA": "10990633"
-              },
-              {
-                "KOMMI": "10990636"
-              },
-              {
-                "SAIPET": "10990638"
-              },
-              {
-                "SATYAVOLU": "10990639"
-              },
-              {
-                "GUDAVALURU": "10990634"
-              },
-              {
-                "GANUGAPENTA": "10990631"
-              },
-              {
-                "VELIGNDALA": "10990641"
-              },
-              {
-                "NEKUNAMPET": "10990637"
-              },
-              {
-                "PARLAPALLI": "10990629"
-              },
-              {
-                "THURUPUYERRABALLI": "10990640"
-              },
-              {
-                "GARIMINAPENTA": "10990632"
-              },
-              {
-                "ISAKADHAMERLA": "10990635"
-              },
-              {
-                "BEDUDURU": "11190628"
-              },
-              {
-                "K.SUGUMANCHIPALLI": "11190632"
-              },
-              {
-                "S.KOTHAPALLIOFSANKEPALLE": "11190640"
-              },
-              {
-                "T.KODUR": "11190641"
-              },
-              {
-                "BURUJUPALLI": "11190629"
-              },
-              {
-                "DATHAPURAM": "11190631"
-              },
-              {
-                "OBANAPETA": "11190636"
-              },
-              {
-                "YERRAGUDI": "11190643"
-              },
-              {
-                "CHOWTAPALLI": "11190630"
-              },
-              {
-                "KONDAPURAM1": "11190633"
-              },
-              {
-                "KONDAPURAM2": "11190634"
-              },
-              {
-                "TALLAPRODATUR": "11190642"
-              },
-              {
-                "LAVANURU-1": "11190635"
-              },
-              {
-                "P.ANANTHAPURAM": "11190637"
-              },
-              {
-                "YETURU": "11190644"
-              },
-              {
-                "POTTIPADU": "11190638"
-              },
-              {
-                "REGADIPALLI": "11190639"
-              },
-              {
-                "LAVANURU-2": "11190651"
-              }
-            ]
-          },
-          {
             "ATLOOR_R": [
               {
                 "MUTHUKUR": "11190296"
@@ -49428,7 +49441,6 @@ onChange3(secCode)
       }
     ]
   }
-
     //this.districtAry = [];
     // let distrcictVal = 'District1';
      //let divValnn = 'Division1';

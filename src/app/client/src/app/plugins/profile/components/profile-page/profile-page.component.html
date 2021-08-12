@@ -75,15 +75,16 @@
                 <td><b>CFMS ID</b></td>
                 <td>{{cfmsId}}</td>
               </tr>
-              <tr>
-				  <td><b>Mandal/ULB</b></td>
-                <td>{{mandal}}</td>
+            
+                <tr>
+                  <td><b>District</b></td>
+                <td>{{districtName}}</td>
                 <td><b>Revenue Division</b></td>
                 <td>{{revDiv}}</td>
                 </tr>
                 <tr>
-                  <td><b>District</b></td>
-                <td>{{districtName}}</td>
+                <td><b>Mandal/ULB</b></td>
+                <td>{{mandal}}</td>
                 <td><b>Secretariat Name</b></td>
                 <td>{{secName}}</td>
                 </tr>
@@ -688,7 +689,7 @@ Edit User
 <div class="sb-field">
   <div class="required field mb-8">
       <label class="mb-10 font-weight-bold">Secretariat Code<span class="sb-color-warning">*</span></label>
-              <input class="sb-form-control" formControlName="secCode"  [(ngModel)]="editSecCode"  disabled= "true" [(ngModel)]= "secCodeList"  aria-label="Enter Secretariat Code" type="text" name="secCode"
+              <input class="sb-form-control" formControlName="secCode"  [(ngModel)]="secCodeList"  disabled= "true"  aria-label="Enter Secretariat Code" type="text" name="secCode"
                 placeholder="Secretariat Code" autofocus>
                 <div class="mt-0 mb-8 ui pointing red basic label below" *ngIf="userEditRegistration.controls.secCode.invalid && userEditRegistration.controls['secCode'].errors.required  && !userEditRegistration.controls['secCode'].pristine">
                   Enter secretariat code
